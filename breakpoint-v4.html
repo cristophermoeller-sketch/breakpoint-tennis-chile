@@ -1,0 +1,2835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Break Point Tennis Chile — Plataforma</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --lime:#C5E647;--lime-d:#a8c73a;--lime-dim:rgba(197,230,71,0.08);
+  --black:#0A0A0A;--b2:#111111;--b3:#1A1A1A;--b4:#222222;--b5:#2A2A2A;
+  --gray:#3A3A3A;--gray2:#555;--gray3:#888;--muted:#666;
+  --white:#FFFFFF;--r:8px;--rl:14px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+.bb{font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em}
+/* SPA */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,10,10,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(197,230,71,0.08);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none}
+.logo-txt{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;color:#fff}
+.logo-sub{font-size:8px;color:var(--gray2);letter-spacing:0.12em;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:12px;color:var(--gray3);text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-ctas{display:flex;gap:8px;align-items:center}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;border:none;font-family:'Inter',sans-serif;white-space:nowrap}
+.btn-lime{background:var(--lime);color:var(--black);font-weight:600}
+.btn-lime:hover{background:var(--lime-d);transform:translateY(-1px)}
+.btn-out{background:transparent;color:var(--lime);border:1px solid var(--lime)}
+.btn-out:hover{background:var(--lime-dim)}
+.btn-ghost{background:transparent;color:var(--gray3);border:1px solid var(--gray)}
+.btn-ghost:hover{border-color:var(--gray3);color:#fff}
+.btn-dark{background:var(--b3);color:#fff;border:1px solid var(--b5)}
+.btn-dark:hover{background:var(--b4)}
+.btn-sm{padding:6px 14px;font-size:11px}
+.btn-lg{padding:13px 32px;font-size:15px}
+/* SECTION SHARED */
+.sec{padding:80px 48px;position:relative}
+.sec-eye{font-size:10px;color:var(--lime);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sec-eye::before{content:'';display:block;width:20px;height:1px;background:var(--lime)}
+.sec-h2{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:.95;color:#fff;margin-bottom:14px}
+.sec-sub{font-size:14px;color:var(--gray3);line-height:1.7;margin-bottom:48px;max-width:460px}
+/* TAGS */
+.badge{display:inline-block;font-size:9px;padding:3px 7px;border-radius:4px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.tag-lime{background:#1e2a12;color:var(--lime)}
+.tag-purple{background:#1a0a2a;color:#a78bfa}
+.tag-blue{background:#0a1a2e;color:#60a5fa}
+.tag-orange{background:#1e1000;color:#fb923c}
+.tag-red{background:#1e0808;color:#f87171}
+.tag-gray{background:var(--b4);color:var(--gray3)}
+.tag-teal{background:#071e1a;color:#2dd4bf}
+.tag-gold{background:#1e1400;color:#fbbf24}
+/* TABS */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--b4);margin-bottom:20px}
+.tab{padding:10px 18px;font-size:12px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.tab:hover{color:#fff}
+.tab.active{color:var(--lime);border-bottom-color:var(--lime)}
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--b4);border-radius:16px;overflow:hidden}
+.feat{background:var(--b2);padding:32px 28px;transition:background .3s;position:relative;overflow:hidden}
+.feat:hover{background:var(--b3)}
+.feat-icon{width:44px;height:44px;border-radius:10px;background:rgba(197,230,71,0.08);border:1px solid rgba(197,230,71,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.feat-t{font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:8px}
+.feat-d{font-size:12px;color:var(--gray3);line-height:1.6}
+/* PLAYER CARDS */
+.dir-header{background:var(--b2);border-bottom:1px solid var(--b4);padding:80px 48px 28px;position:sticky;top:60px;z-index:50}
+.dir-search-row{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.search-box{display:flex;align-items:center;gap:8px;background:var(--b3);border:1px solid var(--b5);border-radius:var(--r);padding:10px 16px;flex:1;max-width:420px}
+.search-box input{background:transparent;border:none;color:#fff;font-size:13px;font-family:'Inter',sans-serif;outline:none;flex:1;width:100%}
+.search-box input::placeholder{color:var(--muted)}
+.filter-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.filter-chip{background:var(--b3);border:1px solid var(--b5);border-radius:100px;padding:5px 14px;font-size:11px;color:var(--gray3);cursor:pointer;transition:all .2s;user-select:none}
+.filter-chip:hover{border-color:var(--gray3);color:#fff}
+.filter-chip.on{border-color:var(--lime);color:var(--lime);background:rgba(197,230,71,0.06)}
+.dir-count{font-size:11px;color:var(--muted);margin-left:auto}
+.players-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:32px 48px}
+.pc{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px;cursor:pointer;transition:all .2s}
+.pc:hover{border-color:rgba(197,230,71,0.35);transform:translateY(-2px)}
+.pc-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px;margin-bottom:12px;border:2px solid;flex-shrink:0}
+.pc-n{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+.pc-cl{font-size:10px;color:var(--muted);margin-bottom:12px}
+.pc-stats{display:flex;gap:10px;margin-bottom:12px}
+.pc-sn{font-family:'Bebas Neue',sans-serif;font-size:20px;line-height:1}
+.pc-sl{font-size:8px;color:var(--muted);text-transform:uppercase;margin-top:2px;letter-spacing:.04em}
+.pc-badges{display:flex;gap:5px;flex-wrap:wrap}
+/* PROFILE */
+.profile-wrapper{padding-top:60px}
+.profile-hero-bg{background:linear-gradient(180deg,#141a0a 0%,var(--black) 100%);border-bottom:1px solid var(--b4);padding:40px 48px 32px}
+.profile-top{display:flex;gap:24px;align-items:flex-start;margin-bottom:28px}
+.profile-av{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:30px;border:2.5px solid var(--lime);background:#1e2a12;color:var(--lime);flex-shrink:0}
+.profile-name{font-family:'Bebas Neue',sans-serif;font-size:40px;line-height:.95;color:#fff;margin-bottom:6px}
+.profile-meta{font-size:12px;color:var(--gray3);margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.profile-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.profile-body{padding:0 48px 48px;display:grid;grid-template-columns:1fr 320px;gap:24px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--r);padding:16px}
+.stat-label{font-size:10px;color:var(--muted);margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase}
+.stat-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--lime);line-height:1}
+.stat-unit{font-size:10px;color:var(--gray2)}
+.video-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);overflow:hidden;margin-bottom:16px}
+.video-header{padding:14px 16px 0;font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.video-thumb{background:var(--b4);height:200px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;margin:12px 0 0}
+.play-btn{width:52px;height:52px;border-radius:50%;background:rgba(197,230,71,0.15);border:2px solid var(--lime);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.video-label{position:absolute;bottom:10px;left:10px;font-size:10px;color:#fff;background:rgba(0,0,0,0.7);padding:3px 8px;border-radius:4px}
+.match-table{width:100%;border-collapse:collapse}
+.match-table th{font-size:10px;color:var(--muted);text-align:left;padding:8px 0;border-bottom:1px solid var(--b4);text-transform:uppercase;letter-spacing:.04em;font-weight:500}
+.match-table td{font-size:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.03);color:var(--gray3)}
+.match-table td:first-child{color:#fff}
+.win{color:#22c55e;font-weight:500}
+.loss{color:#ef4444;font-weight:500}
+.side-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px;margin-bottom:14px}
+.side-card-t{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;margin-bottom:14px;letter-spacing:.04em}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px}
+.info-row:last-child{border:none}
+.info-row .lbl{color:var(--muted)}
+.info-row .val{color:#fff;font-weight:500}
+/* PRIVATE ESSAY */
+.essay-lock{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:32px;text-align:center;position:relative;overflow:hidden}
+.essay-lock::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(197,230,71,0.03) 0%,transparent 60%)}
+.essay-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(197,230,71,0.08);border:1px solid rgba(197,230,71,0.2);border-radius:100px;padding:4px 12px;font-size:10px;color:var(--lime);margin-bottom:16px}
+.essay-content{background:var(--b4);border:1px solid var(--b5);border-radius:var(--r);padding:20px;text-align:left;font-size:13px;color:var(--gray3);line-height:1.7;margin-bottom:16px}
+/* COACHES NCAA */
+.coaches-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 48px 48px}
+.coach-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:22px;cursor:pointer;transition:all .2s}
+.coach-card:hover{border-color:rgba(197,230,71,.3);transform:translateY(-2px)}
+.coach-uni-logo{width:52px;height:52px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;margin-bottom:12px;border:1.5px solid;letter-spacing:.04em}
+.coach-uni{font-size:10px;color:var(--lime);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.coach-name{font-size:14px;font-weight:500;color:#fff;margin-bottom:2px}
+.coach-sport{font-size:11px;color:var(--muted);margin-bottom:12px}
+.coach-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.coach-info{display:flex;flex-direction:column;gap:5px}
+.coach-info-row{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray3)}
+/* TORNEOS */
+.tournament-list{padding:0 48px 48px;display:flex;flex-direction:column;gap:12px}
+.tourn-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px 24px;display:flex;align-items:center;gap:20px;cursor:pointer;transition:all .2s}
+.tourn-card:hover{border-color:rgba(197,230,71,.25)}
+.tourn-date{background:var(--b4);border-radius:var(--r);padding:10px 14px;text-align:center;min-width:64px;flex-shrink:0}
+.tourn-date-d{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--lime);line-height:1}
+.tourn-date-m{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.tourn-body{flex:1;min-width:0}
+.tourn-name{font-size:14px;font-weight:500;color:#fff;margin-bottom:4px}
+.tourn-meta{font-size:11px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}
+.tourn-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.tourn-prize{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)}
+/* DASHBOARD */
+.dashboard{padding-top:60px;display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.sidebar-nav{background:var(--b2);border-right:1px solid var(--b4);padding:24px 0;position:fixed;top:60px;left:0;bottom:0;width:220px;overflow-y:auto}
+.sn-section{padding:0 16px;margin-bottom:24px}
+.sn-label{font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;padding:0 8px}
+.sn-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--r);cursor:pointer;transition:all .2s;font-size:12px;color:var(--gray3);margin-bottom:2px}
+.sn-item:hover{background:var(--b3);color:#fff}
+.sn-item.active{background:rgba(197,230,71,0.08);color:var(--lime);border:1px solid rgba(197,230,71,0.15)}
+.dash-content{margin-left:220px;padding:32px 40px}
+.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.dash-h{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff}
+.dash-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.metric{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px}
+.metric-l{font-size:10px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.metric-n{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--lime);line-height:1;margin-bottom:4px}
+.metric-trend{font-size:10px;color:#22c55e}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.dash-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px}
+.dash-card-t{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#fff;margin-bottom:16px;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center}
+.activity-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.activity-item:last-child{border:none}
+.act-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.act-text{font-size:12px;color:var(--gray3);line-height:1.5}
+.act-text strong{color:#fff;font-weight:500}
+.act-time{font-size:10px;color:var(--muted);margin-top:2px}
+.bar-chart{display:flex;align-items:flex-end;gap:6px;height:80px;margin-bottom:8px}
+.bar{flex:1;background:rgba(197,230,71,0.15);border-radius:4px 4px 0 0;transition:background .2s;cursor:pointer}
+.bar:hover{background:rgba(197,230,71,0.35)}
+.bar.active-bar{background:var(--lime)}
+.bar-labels{display:flex;gap:6px}
+.bar-l{flex:1;font-size:8px;color:var(--muted);text-align:center}
+.progress-bar{background:var(--b4);border-radius:100px;height:6px;overflow:hidden;margin-bottom:8px}
+.progress-fill{background:var(--lime);height:100%;border-radius:100px}
+/* SPONSOR */
+.sp-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:24px;transition:all .2s;cursor:pointer}
+.sp-card:hover{border-color:rgba(197,230,71,.3);transform:translateY(-2px)}
+.sp-icon{width:48px;height:48px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;margin-bottom:16px;background:rgba(197,230,71,0.08);border:1px solid rgba(197,230,71,0.15)}
+.sp-t{font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;margin-bottom:8px}
+.sp-d{font-size:12px;color:var(--gray3);line-height:1.6;margin-bottom:16px}
+.sp-price{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--lime);margin-bottom:4px}
+.sp-price-l{font-size:10px;color:var(--muted)}
+/* MARKETPLACE */
+.item-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:all .2s}
+.item-card:hover{border-color:rgba(197,230,71,.3);transform:translateY(-2px)}
+.item-img{background:var(--b4);height:160px;display:flex;align-items:center;justify-content:center;position:relative}
+.item-body{padding:16px}
+.item-name{font-size:13px;font-weight:500;color:#fff;margin-bottom:4px}
+.item-sub{font-size:11px;color:var(--muted);margin-bottom:10px}
+.item-price{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)}
+.item-user{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--muted);margin-top:8px}
+/* CLUBS */
+.club-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px;cursor:pointer;transition:all .2s}
+.club-card:hover{border-color:rgba(197,230,71,.3);transform:translateY(-2px)}
+.club-name{font-size:14px;font-weight:500;color:#fff;margin-bottom:4px}
+.club-loc{font-size:11px;color:var(--muted);margin-bottom:12px}
+.club-info-mini{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.cim{font-size:11px;color:var(--gray3);display:flex;justify-content:space-between}
+.rating-stars{color:var(--lime);font-size:12px;letter-spacing:1px}
+/* PSICOLOGOS / ENTRENADORES */
+.pro-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:22px;cursor:pointer;transition:all .2s;display:flex;gap:16px;align-items:flex-start}
+.pro-card:hover{border-color:rgba(197,230,71,.3)}
+.pro-av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:20px;border:2px solid;flex-shrink:0}
+.pro-name{font-size:14px;font-weight:500;color:#fff;margin-bottom:2px}
+.pro-title{font-size:11px;color:var(--lime);margin-bottom:6px}
+.pro-desc{font-size:11px;color:var(--gray3);line-height:1.5;margin-bottom:10px}
+/* SUCCESS STORIES */
+.story-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:all .2s}
+.story-card:hover{border-color:rgba(197,230,71,.3);transform:translateY(-2px)}
+.story-top{height:180px;display:flex;align-items:flex-end;padding:20px;position:relative;background:linear-gradient(135deg,#141a0a,#0a1a0a)}
+.story-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0.8) 0%,transparent 60%)}
+.story-name{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff;position:relative;z-index:2}
+.story-title{font-size:10px;color:var(--lime);position:relative;z-index:2;letter-spacing:.08em}
+.story-body{padding:20px}
+.story-uni{font-size:11px;color:var(--lime);font-weight:500;margin-bottom:6px}
+.story-quote{font-size:12px;color:var(--gray3);line-height:1.6;font-style:italic}
+/* PATHWAYS */
+.pathway-card{background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:28px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.pathway-card:hover{border-color:rgba(197,230,71,.3);transform:translateY(-2px)}
+.pathway-num{font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(197,230,71,0.06);position:absolute;top:-10px;right:16px;line-height:1}
+.pathway-icon{width:44px;height:44px;border-radius:10px;background:rgba(197,230,71,0.08);border:1px solid rgba(197,230,71,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.pathway-t{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:8px}
+.pathway-d{font-size:12px;color:var(--gray3);line-height:1.6;margin-bottom:16px}
+.pathway-step{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:11px;color:var(--gray3)}
+.pathway-step:last-child{border:none}
+.step-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);margin-top:5px;flex-shrink:0}
+/* MESSAGING */
+.msg-layout{display:grid;grid-template-columns:300px 1fr;height:calc(100vh - 60px);margin-top:60px}
+.msg-sidebar{background:var(--b2);border-right:1px solid var(--b4);overflow-y:auto}
+.msg-sidebar-header{padding:16px 20px;border-bottom:1px solid var(--b4);display:flex;align-items:center;justify-content:space-between}
+.msg-sidebar-title{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;letter-spacing:.04em}
+.msg-thread{display:flex;gap:12px;padding:14px 20px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s}
+.msg-thread:hover,.msg-thread.active-thread{background:var(--b3)}
+.msg-thread-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:14px;flex-shrink:0;border:1.5px solid}
+.msg-thread-name{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+.msg-thread-prev{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+.msg-unread{width:7px;height:7px;border-radius:50%;background:var(--lime);margin-top:4px;flex-shrink:0}
+.msg-main{display:flex;flex-direction:column;background:var(--black)}
+.msg-main-header{padding:16px 24px;border-bottom:1px solid var(--b4);display:flex;align-items:center;gap:14px;background:var(--b2)}
+.msg-body{flex:1;overflow-y:auto;padding:24px;display:flex;flex-direction:column;gap:16px}
+.msg-bubble-wrap{display:flex;gap:10px;align-items:flex-end}
+.msg-bubble-wrap.mine{flex-direction:row-reverse}
+.bubble{max-width:65%;padding:12px 16px;border-radius:14px;font-size:13px;line-height:1.5}
+.bubble.them{background:var(--b3);color:#fff;border-bottom-left-radius:4px}
+.bubble.mine{background:var(--lime);color:var(--black);border-bottom-right-radius:4px}
+.msg-input-bar{padding:16px 24px;border-top:1px solid var(--b4);display:flex;gap:10px;align-items:center;background:var(--b2)}
+.msg-input{flex:1;background:var(--b3);border:1px solid var(--b5);border-radius:24px;padding:10px 18px;color:#fff;font-size:13px;font-family:'Inter',sans-serif;outline:none}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--b2);border:1px solid var(--b4);border-radius:20px;padding:36px;width:460px;max-width:90vw;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:16px;right:16px;background:var(--b4);border:none;color:var(--gray3);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1}
+.modal-close:hover{color:#fff}
+.modal-h{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;margin-bottom:6px}
+.modal-sub{font-size:13px;color:var(--muted);margin-bottom:24px}
+.modal-tabs{display:flex;background:var(--b3);border-radius:var(--r);padding:4px;margin-bottom:24px;gap:4px}
+.modal-tab{flex:1;padding:8px;text-align:center;font-size:12px;color:var(--muted);cursor:pointer;border-radius:6px;transition:all .2s}
+.modal-tab.active{background:var(--b2);color:#fff}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:.04em}
+.field input,.field select,.field textarea{width:100%;background:var(--b3);border:1px solid var(--b5);border-radius:var(--r);padding:10px 14px;color:#fff;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
+.field textarea{resize:vertical;min-height:80px;line-height:1.5}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--lime)}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field select option{background:var(--b3)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--b3);border:1px solid var(--lime);border-radius:var(--r);padding:12px 20px;font-size:13px;color:#fff;z-index:999;display:none;align-items:center;gap:10px}
+.toast.show{display:flex}
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price-card{background:var(--b3);border:1px solid var(--b5);border-radius:16px;padding:28px;transition:border-color .2s}
+.price-card.featured{border-color:var(--lime);background:var(--b2)}
+.price-badge{display:inline-block;background:var(--lime);color:var(--black);font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.06em;margin-bottom:14px}
+.price-name{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:4px}
+.price-n{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--lime);line-height:1;margin-bottom:4px}
+.price-period{font-size:11px;color:var(--muted);margin-bottom:20px}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.price-features li{font-size:12px;color:var(--gray3);display:flex;align-items:center;gap:8px}
+.price-features li::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--lime);flex-shrink:0}
+/* STEPS */
+.step{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.step:last-child{border:none}
+.step-n{font-family:'Bebas Neue',sans-serif;font-size:52px;color:rgba(197,230,71,0.12);line-height:1;min-width:60px;flex-shrink:0}
+.step-t{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;margin-bottom:4px;margin-top:6px}
+.step-d{font-size:13px;color:var(--gray3);line-height:1.6}
+/* FOOTER */
+.footer{background:var(--black);border-top:1px solid var(--b4);padding:36px 48px;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:14px;color:#fff;letter-spacing:.06em;margin-bottom:4px}
+.footer-copy{font-size:11px;color:var(--muted)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:11px;color:var(--muted);text-decoration:none;cursor:pointer}
+.footer-links a:hover{color:#fff}
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden;background:var(--black)}
+.hero-content{position:relative;z-index:2;max-width:600px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(197,230,71,0.08);border:1px solid rgba(197,230,71,0.2);border-radius:100px;padding:5px 14px;font-size:10px;color:var(--lime);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:84px;line-height:.88;color:#fff;margin-bottom:10px}
+.hero-h1 .acc{color:var(--lime)}
+.hero-tag{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gray2);margin-bottom:20px;letter-spacing:.04em}
+.hero-desc{font-size:15px;color:var(--gray3);line-height:1.7;max-width:420px;margin-bottom:32px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.hero-stats{display:flex;gap:36px}
+.hs-n{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--lime);line-height:1;margin-bottom:4px}
+.hs-l{font-size:10px;color:var(--muted);letter-spacing:.04em}
+/* GRID HELPERS */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+/* SPONSOR MSG */
+.sponsor-msg{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;transition:background .2s}
+.sponsor-msg:hover{background:var(--b4);margin:0 -20px;padding:12px 20px;border-radius:var(--r)}
+.sponsor-msg:last-child{border:none}
+.sponsor-logo-sm{width:36px;height:36px;border-radius:var(--r);background:var(--b4);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--lime);flex-shrink:0;border:1px solid var(--b5)}
+.msg-brand{font-size:12px;font-weight:500;color:#fff;margin-bottom:2px}
+.msg-preview{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+.msg-time{font-size:10px;color:var(--muted);margin-left:auto;flex-shrink:0}
+.unread-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);margin-top:4px;flex-shrink:0}
+/* ADMIN */
+.admin-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.admin-row:last-child{border:none}
+.admin-status{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.status-pending{background:#fbbf24}
+.status-approved{background:#22c55e}
+.status-rejected{background:#ef4444}
+/* ROI TABLE */
+.roi-table{width:100%;border-collapse:collapse}
+.roi-table th{font-size:10px;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--b4);text-transform:uppercase;letter-spacing:.04em;font-weight:500;background:var(--b4)}
+.roi-table td{font-size:12px;padding:12px;border-bottom:1px solid rgba(255,255,255,0.03);color:var(--gray3)}
+.roi-table td:first-child{color:#fff;font-weight:500}
+.roi-table tr:hover td{background:rgba(197,230,71,0.02)}
+</style>
+</head>
+<body>
+<!-- SVG SPRITE -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<symbol id="ic-home" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9.5L10 3l7 6.5V17a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M7 18V12h6v6"/></symbol>
+<symbol id="ic-user" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="7" r="3"/><path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7"/></symbol>
+<symbol id="ic-users" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="3"/><path d="M1 18c0-3.314 2.686-6 6-6s6 2.686 6 6"/><circle cx="15" cy="7" r="2.5"/><path d="M13.5 18c0-2.485 1.567-4.5 4.5-4.5"/></symbol>
+<symbol id="ic-target" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.5"/><circle cx="10" cy="10" r="1"/></symbol>
+<symbol id="ic-grad" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8l8-4 8 4-8 4-8-4z"/><path d="M5 9.5V14c0 1.5 2.5 3 5 3s5-1.5 5-3V9.5"/><path d="M18 8v5"/></symbol>
+<symbol id="ic-trophy" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h8v7a4 4 0 01-8 0V3z"/><path d="M6 6H3a2 2 0 000 4h3"/><path d="M14 6h3a2 2 0 010 4h-3"/><path d="M10 14v3"/><path d="M7 17h6"/></symbol>
+<symbol id="ic-medal" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="13" r="5"/><path d="M7 8L5 2h10l-2 6"/></symbol>
+<symbol id="ic-brain" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.5 3C7 3 5 5 5 7.5c0 1 .3 1.9.9 2.5C4.3 10.7 3 12.2 3 14c0 2.2 1.8 3.5 4 3.5h7c2.2 0 4-1.8 4-4 0-1.5-1-2.8-2.5-3.3.4-.6.5-1.3.5-2C16 5.8 14.2 4 12 4c-.6 0-1.2.2-1.7.4C9.9 3.6 9.2 3 8 3"/></symbol>
+<symbol id="ic-store" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h14v9H3z"/><path d="M1 5l2 4h14l2-4H1z"/><path d="M8 18v-5h4v5"/></symbol>
+<symbol id="ic-swap" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h12M4 6l3-3M4 6l3 3"/><path d="M16 14H4m12 0l-3 3m3-3l-3-3"/></symbol>
+<symbol id="ic-gift" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="9" width="14" height="10" rx="1"/><path d="M10 9v10"/><path d="M1 9h18v2H1z"/><path d="M10 6c0-1.7-1.3-3-3-3a2 2 0 000 4h3"/><path d="M10 6c0-1.7 1.3-3 3-3a2 2 0 010 4h-3"/></symbol>
+<symbol id="ic-map" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="1,4 7,2 13,4 19,2 19,18 13,16 7,18 1,16"/><line x1="7" y1="2" x2="7" y2="18"/><line x1="13" y1="4" x2="13" y2="16"/></symbol>
+<symbol id="ic-calendar" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="14" rx="2"/><path d="M2 8h16"/><path d="M6 2v4M14 2v4"/><circle cx="6.5" cy="12" r=".5" fill="currentColor"/><circle cx="10" cy="12" r=".5" fill="currentColor"/><circle cx="13.5" cy="12" r=".5" fill="currentColor"/></symbol>
+<symbol id="ic-chart" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,14 7,9 11,13 18,5"/><path d="M2 18h16"/></symbol>
+<symbol id="ic-msg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 3H2v11h3l3 3 3-3h7V3z"/></symbol>
+<symbol id="ic-settings" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="3"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></symbol>
+<symbol id="ic-lock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="9" width="12" height="9" rx="2"/><path d="M7 9V6a3 3 0 016 0v3"/><circle cx="10" cy="14" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="ic-play" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,10 5,17" fill="currentColor"/></symbol>
+<symbol id="ic-star" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="10,2 12.9,7.6 19,8.5 14.5,12.8 15.8,18.9 10,16 4.2,18.9 5.5,12.8 1,8.5 7.1,7.6" fill="currentColor"/></symbol>
+<symbol id="ic-tennis" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="7.5"/><path d="M4 4.5C5.5 6 6.5 8 6.5 10s-1 4-2.5 5.5"/><path d="M16 4.5C14.5 6 13.5 8 13.5 10s1 4 2.5 5.5"/></symbol>
+<symbol id="ic-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,10 8,15 17,5"/></symbol>
+<symbol id="ic-route" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="6" r="2.5"/><circle cx="15" cy="14" r="2.5"/><path d="M7.5 6h4a3 3 0 013 3v2"/></symbol>
+<symbol id="ic-admin" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L4 5v5c0 4 2.8 7.5 6 8.5 3.2-1 6-4.5 6-8.5V5L10 2z"/></symbol>
+<symbol id="ic-ig" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="14" height="14" rx="4"/><circle cx="10" cy="10" r="3.5"/><circle cx="14.5" cy="5.5" r="0.5" fill="currentColor" stroke="none"/></symbol>
+<symbol id="ic-yt" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6.5s-.2-1.4-.8-2a2.8 2.8 0 00-2-.9C13 3.4 10 3.4 10 3.4s-3 0-5.2.2a2.8 2.8 0 00-2 .9C2.2 5.1 2 6.5 2 6.5S1.8 8.1 1.8 9.7v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2 1.4.9 2.1 1c1.5.1 6.1.2 6.1.2s3 0 5.2-.2c.7-.1 1.4-.4 2-1 .6-.6.8-2 .8-2s.2-1.6.2-3.2V9.7C18.2 8.1 18 6.5 18 6.5z"/><polygon points="8.5,12.5 13,10 8.5,7.5" fill="currentColor" stroke="none"/></symbol>
+<symbol id="ic-link" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13H6a4 4 0 010-8h2"/><path d="M10 7h4a4 4 0 010 8h-2"/><line x1="8" y1="10" x2="12" y2="10"/></symbol>
+<symbol id="ic-upload" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14v2a2 2 0 002 2h10a2 2 0 002-2v-2"/><polyline points="13,7 10,4 7,7"/><line x1="10" y1="4" x2="10" y2="14"/></symbol>
+<symbol id="ic-plus" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></symbol>
+<symbol id="ic-arrow-r" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="7,5 13,10 7,15"/></symbol>
+<symbol id="ic-search" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="5.5"/><line x1="13.5" y1="13.5" x2="18" y2="18"/></symbol>
+<symbol id="ic-tag" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h6l8 8a2 2 0 010 2.8l-3.2 3.2a2 2 0 01-2.8 0L3 9V3z"/><circle cx="7" cy="7" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="ic-filter" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="1,3 19,3 12,12 12,18 8,18 8,12"/></symbol>
+<symbol id="ic-utr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><text x="2" y="15" font-family="sans-serif" font-size="9" font-weight="700" fill="#C5E647">UTR</text></symbol>
+</svg>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" onclick="showPage('landing')">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="14" r="13" fill="#C5E647"/>
+      <path d="M4.5 9.5C7 11 8 12.5 8 14s-1 3-3.5 4.5" stroke="#0A0A0A" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M23.5 9.5C21 11 20 12.5 20 14s1 3 3.5 4.5" stroke="#0A0A0A" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <div class="logo-txt">Break Point</div>
+      <div class="logo-sub">Tennis Chile</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a onclick="showPage('directorio')">Jugadores</a>
+    <a onclick="showPage('universidades')">NCAA & Universidades</a>
+    <a onclick="showPage('torneos')">Torneos</a>
+    <a onclick="showPage('entrenadores')">Entrenadores</a>
+    <a onclick="showPage('patrocinadores')">Patrocinadores</a>
+    <a onclick="showPage('rutas')">Rutas</a>
+    <a onclick="showPage('mensajes')">Mensajes</a>
+  </div>
+  <div class="nav-ctas">
+    <button class="btn btn-ghost btn-sm" onclick="openModal('modal-login')">Ingresar</button>
+    <button class="btn btn-lime btn-sm" onclick="showPage('dashboard')">Mi Panel</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 1 — LANDING
+═══════════════════════════════════════════════════ -->
+<div class="page active" id="page-landing">
+<section id="hero" style="display:flex;align-items:center;gap:60px">
+  <!-- Subtle deco ball -->
+  <svg style="position:absolute;left:42%;top:10%;opacity:.06;pointer-events:none" width="340" height="340" viewBox="0 0 340 340" fill="none">
+    <circle cx="170" cy="170" r="168" stroke="#C5E647" stroke-width="2"/>
+    <path d="M28 124C70 147 93 158 93 170s-23 23-65 46" stroke="#C5E647" stroke-width="2" stroke-linecap="round"/>
+    <path d="M312 124C270 147 247 158 247 170s23 23 65 46" stroke="#C5E647" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+
+  <!-- Left: headline + CTAs -->
+  <div class="hero-content" style="flex:1;min-width:0">
+    <div class="hero-badge">
+      <svg width="12" height="12"><use href="#ic-tennis"/></svg>
+      Plataforma #1 de Tenis en Chile
+    </div>
+    <h1 class="hero-h1">EL HUB DEL<br>TENIS <span class="acc">CHILENO</span></h1>
+    <div class="hero-tag">Conecta. Compite. Evoluciona.</div>
+    <p class="hero-desc">La plataforma que conecta jugadores amateur y profesionales con coaches de NCAA, patrocinadores y oportunidades reales de desarrollo.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-lime btn-lg" onclick="openModal('modal-login')">Crear Perfil Gratis</button>
+      <button class="btn btn-ghost btn-lg" onclick="showPage('directorio')">Ver Jugadores</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hs-n">850+</div><div class="hs-l">Jugadores Registrados</div></div>
+      <div><div class="hs-n">120+</div><div class="hs-l">Coaches NCAA Activos</div></div>
+      <div><div class="hs-n">45</div><div class="hs-l">Patrocinadores</div></div>
+    </div>
+  </div>
+
+  <!-- Right: Featured player card -->
+  <div style="position:relative;z-index:2;width:340px;flex-shrink:0" id="featured-player-card">
+    <!-- Header label -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse-dot 2s ease-in-out infinite"></div>
+        <span style="font-size:10px;color:var(--lime);letter-spacing:.10em;text-transform:uppercase">Jugador destacado</span>
+      </div>
+      <span style="font-size:9px;color:var(--muted)">Esta semana</span>
+    </div>
+
+    <!-- Card -->
+    <div onclick="showPage('perfil')" style="background:var(--b2);border:1px solid rgba(197,230,71,0.18);border-radius:20px;overflow:hidden;cursor:pointer;transition:border-color .2s;position:relative" onmouseover="this.style.borderColor='rgba(197,230,71,0.45)'" onmouseout="this.style.borderColor='rgba(197,230,71,0.18)'">
+
+      <!-- Photo area -->
+      <div style="height:220px;background:linear-gradient(135deg,#0d1f0d 0%,#1a3a1a 50%,#0a0a0a 100%);position:relative;display:flex;align-items:flex-end;padding:20px">
+        <!-- Simulated photo with initials avatar (replace with <img> when real photo is available) -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+          <div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#1e2a12,#2d4020);border:3px solid var(--lime);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--lime);letter-spacing:.04em;box-shadow:0 0 40px rgba(197,230,71,0.15)">VR</div>
+        </div>
+        <!-- Overlay gradient bottom -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(0deg,var(--b2) 0%,transparent 100%)"></div>
+        <!-- UTR badge top-right -->
+        <div style="position:absolute;top:14px;right:14px;background:rgba(197,230,71,0.12);border:1px solid rgba(197,230,71,0.3);border-radius:8px;padding:6px 10px;text-align:center">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime);line-height:1">10.2</div>
+          <div style="font-size:8px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase">UTR</div>
+        </div>
+        <!-- Rank badge top-left -->
+        <div style="position:absolute;top:14px;left:14px;background:rgba(0,0,0,0.6);border:1px solid var(--b5);border-radius:8px;padding:6px 10px;text-align:center">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;line-height:1">#18</div>
+          <div style="font-size:8px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase">Ranking</div>
+        </div>
+      </div>
+
+      <!-- Info body -->
+      <div style="padding:18px 20px 20px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#fff;letter-spacing:.04em;line-height:1">VALENTINA ROJAS</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px">Santiago · Club Miraflores · 17 años</div>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin:10px 0">
+          <span class="badge tag-lime">NCAA D1</span>
+          <span class="badge tag-teal">UTR Verified</span>
+          <span class="badge tag-orange">Open a Sponsors</span>
+        </div>
+
+        <!-- Mini story -->
+        <p style="font-size:12px;color:var(--gray3);line-height:1.6;margin-bottom:14px;font-style:italic">"Comencé con una raqueta prestada en Ñuñoa. Hoy entreno 4 horas diarias con la mira puesta en una beca NCAA División I."</p>
+
+        <!-- Stats mini row -->
+        <div style="display:flex;gap:0;background:var(--b3);border:1px solid var(--b4);border-radius:10px;overflow:hidden;margin-bottom:14px">
+          <div style="flex:1;padding:10px;text-align:center;border-right:1px solid var(--b4)">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#22c55e">87%</div>
+            <div style="font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">Win Rate</div>
+          </div>
+          <div style="flex:1;padding:10px;text-align:center;border-right:1px solid var(--b4)">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff">24</div>
+            <div style="font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">Torneos</div>
+          </div>
+          <div style="flex:1;padding:10px;text-align:center">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">3.9</div>
+            <div style="font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">GPA</div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <button class="btn btn-lime" style="width:100%;justify-content:center;font-size:12px" onclick="event.stopPropagation();showPage('perfil')">
+          Ver perfil completo
+          <svg width="14" height="14"><use href="#ic-arrow-r"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Nav dots for multiple featured players -->
+    <div style="display:flex;justify-content:center;gap:6px;margin-top:12px">
+      <div style="width:20px;height:4px;border-radius:2px;background:var(--lime)"></div>
+      <div style="width:6px;height:4px;border-radius:2px;background:var(--b5);cursor:pointer"></div>
+      <div style="width:6px;height:4px;border-radius:2px;background:var(--b5);cursor:pointer"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+</style>
+
+<!-- FEATURES -->
+<section class="sec" style="background:var(--b2)">
+  <div class="sec-eye">Funcionalidades</div>
+  <h2 class="sec-h2">TODO LO QUE<br>NECESITAS</h2>
+  <p class="sec-sub">Una sola plataforma para gestionar tu carrera, conectarte con universidades y atraer patrocinadores.</p>
+  <div class="feat-grid">
+    <div class="feat">
+      <div class="feat-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-user"/></svg></div>
+      <div class="feat-t">Perfil Profesional</div>
+      <div class="feat-d">Muestra tu UTR, ranking, historial de partidos, videos y estadísticas en un perfil diseñado para impresionar coaches y patrocinadores.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-grad"/></svg></div>
+      <div class="feat-t">NCAA & Universidades</div>
+      <div class="feat-d">Conéctate directamente con coaches de D1, D2, D3, NAIA y universidades chilenas. Consulta montos de becas y requisitos académicos.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-gift"/></svg></div>
+      <div class="feat-t">Patrocinadores</div>
+      <div class="feat-d">Marketplace de sponsorship con incentivos fiscales, ROI medible y beneficios RSE para empresas que apoyan el tenis nacional.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-calendar"/></svg></div>
+      <div class="feat-t">Torneos</div>
+      <div class="feat-d">Calendario integrado con TenisChile, ITF, UTR Sport y torneos locales. Inscripción directa y seguimiento de rankings.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-swap"/></svg></div>
+      <div class="feat-t">Mercado de Equipos</div>
+      <div class="feat-d">Compra, vende e intercambia raquetas, cuerdas y accesorios de tenis con otros jugadores de la comunidad.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-brain"/></svg></div>
+      <div class="feat-t">Psicólogos Deportivos</div>
+      <div class="feat-d">Directorio de profesionales especializados en rendimiento mental para tenistas. Sesiones presenciales y online.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+    <div>
+      <div class="sec-eye">Cómo Funciona</div>
+      <h2 class="sec-h2">TU CAMINO<br>AL SIGUIENTE<br>NIVEL</h2>
+      <p class="sec-sub" style="margin-bottom:0">Sigue estos pasos para maximizar tu visibilidad y oportunidades.</p>
+    </div>
+    <div>
+      <div class="step">
+        <div class="step-n">01</div>
+        <div><div class="step-t">Crea tu perfil</div><div class="step-d">Sube tu foto, videos de entrenamiento, conecta tu cuenta UTR Sport e Instagram. Llena tu historial de torneos y estadísticas.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div><div class="step-t">Define tu ruta</div><div class="step-d">¿NCAA? ¿Profesional? ¿Senior circuit? Elige tu camino estratégico y recibe recomendaciones personalizadas para alcanzarlo.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div><div class="step-t">Conecta con coaches</div><div class="step-d">Coaches universitarios y entrenadores chilenos pueden encontrarte, evaluar tu perfil privado y contactarte directamente.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <div><div class="step-t">Consigue sponsorship</div><div class="step-d">Empresas patrocinantes acceden a tu perfil, tus métricas y tu potencial. Negocia paquetes de auspicio desde la plataforma.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" style="background:var(--b2)">
+  <div class="sec-eye">Planes</div>
+  <h2 class="sec-h2">ACCESO A<br>TU MEDIDA</h2>
+  <p class="sec-sub">Para jugadores, coaches y empresas que quieren conectarse con el tenis chileno.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Amateur</div>
+      <div class="price-n">Gratis</div>
+      <div class="price-period">Para siempre</div>
+      <ul class="price-features">
+        <li>Perfil básico con estadísticas</li>
+        <li>Directorio de torneos</li>
+        <li>Mercado de equipos usados</li>
+        <li>Directorio de clubes</li>
+        <li>3 mensajes/mes a coaches</li>
+      </ul>
+      <button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="openModal('modal-login')">Comenzar</button>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">MÁS POPULAR</div>
+      <div class="price-name">Pro</div>
+      <div class="price-n">$9.990</div>
+      <div class="price-period">/ mes · CLP</div>
+      <ul class="price-features">
+        <li>Perfil completo con video</li>
+        <li>Essay privado para coaches/sponsors</li>
+        <li>Mensajes ilimitados</li>
+        <li>Visibilidad en búsquedas NCAA</li>
+        <li>Analytics de perfil</li>
+        <li>Badge verificado</li>
+      </ul>
+      <button class="btn btn-lime" style="width:100%;justify-content:center" onclick="openModal('modal-login')">Activar Pro</button>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Elite</div>
+      <div class="price-n">$24.990</div>
+      <div class="price-period">/ mes · CLP</div>
+      <ul class="price-features">
+        <li>Todo lo de Pro</li>
+        <li>Asesoría personalizada</li>
+        <li>Introducción directa a coaches</li>
+        <li>Gestión de sponsorship</li>
+        <li>Video pitch editado</li>
+        <li>Soporte prioritario</li>
+      </ul>
+      <button class="btn btn-out" style="width:100%;justify-content:center" onclick="openModal('modal-login')">Contactar</button>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS PREVIEW -->
+<section class="sec">
+  <div class="sec-eye">Historias de Éxito</div>
+  <h2 class="sec-h2">JUGADORES<br>QUE LO<br>LOGRARON</h2>
+  <div class="grid-3" style="margin-top:32px">
+    <div class="story-card" onclick="showPage('historias')">
+      <div class="story-top" style="background:linear-gradient(135deg,#0d1f0d,#1a3a1a)">
+        <div class="story-overlay"></div>
+        <div><div class="story-name">Valentina Rojas</div><div class="story-title">UTR 10.2 · Santiago</div></div>
+      </div>
+      <div class="story-body">
+        <div class="story-uni">🏛 University of Miami — NCAA D1</div>
+        <div class="story-quote">"Break Point me conectó con el coach de Miami en 3 semanas. Hoy entreno con beca completa."</div>
+      </div>
+    </div>
+    <div class="story-card" onclick="showPage('historias')">
+      <div class="story-top" style="background:linear-gradient(135deg,#0a0a1e,#1a1a3a)">
+        <div class="story-overlay"></div>
+        <div><div class="story-name">Matías Fuentes</div><div class="story-title">UTR 12.1 · Concepción</div></div>
+      </div>
+      <div class="story-body">
+        <div class="story-uni">🏛 Universidad de Chile — Deportes</div>
+        <div class="story-quote">"Conseguí mi primer patrocinador a los 17 años. La plataforma me dio la visibilidad que necesitaba."</div>
+      </div>
+    </div>
+    <div class="story-card" onclick="showPage('historias')">
+      <div class="story-top" style="background:linear-gradient(135deg,#1e0a00,#3a1a00)">
+        <div class="story-overlay"></div>
+        <div><div class="story-name">Isabela Mora</div><div class="story-title">UTR 8.7 · Viña del Mar</div></div>
+      </div>
+      <div class="story-body">
+        <div class="story-uni">🏛 Rollins College — NCAA D2</div>
+        <div class="story-quote">"Nunca pensé que podría estudiar en EE.UU. El essay privado fue clave para que el coach me contactara."</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:28px;text-align:center"><button class="btn btn-ghost" onclick="showPage('historias')">Ver todas las historias</button></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">BREAK POINT TENNIS CHILE</div>
+    <div class="footer-copy">© 2025 Break Point. Todos los derechos reservados.</div>
+  </div>
+  <div class="footer-links">
+    <a onclick="showPage('landing')">Inicio</a>
+    <a onclick="showPage('directorio')">Jugadores</a>
+    <a onclick="showPage('torneos')">Torneos</a>
+    <a onclick="showPage('patrocinadores')">Patrocinadores</a>
+    <a onclick="showPage('admin')">Admin</a>
+  </div>
+</footer>
+</div><!-- /page-landing -->
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 2 — DIRECTORIO JUGADORES
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-directorio">
+<div class="dir-header">
+  <div class="sec-eye" style="margin-bottom:8px">Comunidad</div>
+  <h2 class="sec-h2" style="font-size:36px;margin-bottom:16px">DIRECTORIO DE JUGADORES</h2>
+  <div class="dir-search-row">
+    <div class="search-box" style="max-width:360px">
+      <svg width="16" height="16" style="color:var(--gray3);flex-shrink:0"><use href="#ic-search"/></svg>
+      <input type="text" placeholder="Buscar jugador, ciudad, club...">
+    </div>
+    <button class="btn btn-lime btn-sm" onclick="openModal('modal-login')">
+      <svg width="14" height="14"><use href="#ic-plus"/></svg> Crear Perfil
+    </button>
+    <span class="dir-count">412 jugadores</span>
+  </div>
+  <div class="filter-row">
+    <span class="filter-chip on">Todos</span>
+    <span class="filter-chip">Amateur</span>
+    <span class="filter-chip">Proyección NCAA</span>
+    <span class="filter-chip">Semi-profesional</span>
+    <span class="filter-chip">Profesional</span>
+    <span class="filter-chip">UTR +10</span>
+    <span class="filter-chip">Junior U18</span>
+    <span class="filter-chip">Disponible para sponsor</span>
+    <span class="filter-chip">Con beca universitaria</span>
+  </div>
+</div>
+<div class="players-grid">
+  <!-- player cards -->
+  <div class="pc" onclick="showPage('perfil')">
+    <div class="pc-av" style="border-color:#C5E647;background:#1e2a12;color:#C5E647">VR</div>
+    <div class="pc-n">Valentina Rojas</div>
+    <div class="pc-cl">Santiago · Club de Tenis Miraflores</div>
+    <div class="pc-stats">
+      <div><div class="pc-sn" style="color:#C5E647">10.2</div><div class="pc-sl">UTR</div></div>
+      <div><div class="pc-sn" style="color:#fff">18</div><div class="pc-sl">Ranking</div></div>
+      <div><div class="pc-sn" style="color:#22c55e">87%</div><div class="pc-sl">W/L</div></div>
+    </div>
+    <div class="pc-badges"><span class="badge tag-lime">Pro</span><span class="badge tag-blue">NCAA</span><span class="badge tag-teal">UTR Verified</span></div>
+  </div>
+  <div class="pc" onclick="showPage('perfil')">
+    <div class="pc-av" style="border-color:#a78bfa;background:#1a0a2a;color:#a78bfa">MF</div>
+    <div class="pc-n">Matías Fuentes</div>
+    <div class="pc-cl">Concepción · CT Bio Bio</div>
+    <div class="pc-stats">
+      <div><div class="pc-sn" style="color:#C5E647">12.1</div><div class="pc-sl">UTR</div></div>
+      <div><div class="pc-sn" style="color:#fff">5</div><div class="pc-sl">Ranking</div></div>
+      <div><div class="pc-sn" style="color:#22c55e">91%</div><div class="pc-sl">W/L</div></div>
+    </div>
+    <div class="pc-badges"><span class="badge tag-lime">Elite</span><span class="badge tag-orange">ATP</span></div>
+  </div>
+  <div class="pc" onclick="showPage('perfil')">
+    <div class="pc-av" style="border-color:#fb923c;background:#1e1000;color:#fb923c">IM</div>
+    <div class="pc-n">Isabela Mora</div>
+    <div class="pc-cl">Viña del Mar · CT Recreo</div>
+    <div class="pc-stats">
+      <div><div class="pc-sn" style="color:#C5E647">8.7</div><div class="pc-sl">UTR</div></div>
+      <div><div class="pc-sn" style="color:#fff">34</div><div class="pc-sl">Ranking</div></div>
+      <div><div class="pc-sn" style="color:#22c55e">74%</div><div class="pc-sl">W/L</div></div>
+    </div>
+    <div class="pc-badges"><span class="badge tag-blue">NCAA D2</span><span class="badge tag-gray">U18</span></div>
+  </div>
+  <div class="pc" onclick="showPage('perfil')">
+    <div class="pc-av" style="border-color:#2dd4bf;background:#071e1a;color:#2dd4bf">CP</div>
+    <div class="pc-n">Carlos Pérez</div>
+    <div class="pc-cl">La Serena · CT La Serena</div>
+    <div class="pc-stats">
+      <div><div class="pc-sn" style="color:#C5E647">9.4</div><div class="pc-sl">UTR</div></div>
+      <div><div class="pc-sn" style="color:#fff">22</div><div class="pc-sl">Ranking</div></div>
+      <div><div class="pc-sn" style="color:#22c55e">81%</div><div class="pc-sl">W/L</div></div>
+    </div>
+    <div class="pc-badges"><span class="badge tag-lime">Pro</span><span class="badge tag-teal">Sponsor</span></div>
+  </div>
+  <div class="pc" onclick="showPage('perfil')">
+    <div class="pc-av" style="border-color:#60a5fa;background:#0a1a2e;color:#60a5fa">AG</div>
+    <div class="pc-n">Andrea González</div>
+    <div class="pc-cl">Santiago · CT La Reina</div>
+    <div class="pc-stats">
+      <div><div class="pc-sn" style="color:#C5E647">7.8</div><div class="pc-sl">UTR</div></div>
+      <div><div class="pc-sn" style="color:#fff">67</div><div class="pc-sl">Ranking</div></div>
+      <div><div class="pc-sn" style="color:#22c55e">68%</div><div class="pc-sl">W/L</div></div>
+    </div>
+    <div class="pc-badges"><span class="badge tag-blue">NCAA D3</span></div>
+  </div>
+  <div class="pc" onclick="showPage('perfil')">
+    <div class="pc-av" style="border-color:#f87171;background:#1e0808;color:#f87171">RS</div>
+    <div class="pc-n">Rodrigo Silva</div>
+    <div class="pc-cl">Temuco · CT Araucanía</div>
+    <div class="pc-stats">
+      <div><div class="pc-sn" style="color:#C5E647">6.2</div><div class="pc-sl">UTR</div></div>
+      <div><div class="pc-sn" style="color:#fff">112</div><div class="pc-sl">Ranking</div></div>
+      <div><div class="pc-sn" style="color:#fbbf24">61%</div><div class="pc-sl">W/L</div></div>
+    </div>
+    <div class="pc-badges"><span class="badge tag-gray">Amateur</span></div>
+  </div>
+  <div class="pc" onclick="showPage('perfil')">
+    <div class="pc-av" style="border-color:#fbbf24;background:#1e1400;color:#fbbf24">LT</div>
+    <div class="pc-n">Lucía Torres</div>
+    <div class="pc-cl">Puerto Montt · CT Los Lagos</div>
+    <div class="pc-stats">
+      <div><div class="pc-sn" style="color:#C5E647">11.3</div><div class="pc-sl">UTR</div></div>
+      <div><div class="pc-sn" style="color:#fff">8</div><div class="pc-sl">Ranking</div></div>
+      <div><div class="pc-sn" style="color:#22c55e">88%</div><div class="pc-sl">W/L</div></div>
+    </div>
+    <div class="pc-badges"><span class="badge tag-lime">Elite</span><span class="badge tag-gold">WTA</span><span class="badge tag-teal">Sponsor</span></div>
+  </div>
+  <div class="pc" onclick="openModal('modal-login')" style="border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;text-align:center">
+    <svg width="32" height="32" style="color:var(--gray2);margin-bottom:12px"><use href="#ic-plus"/></svg>
+    <div style="font-size:12px;color:var(--muted)">¿Eres tenista?</div>
+    <div style="font-size:13px;color:#fff;font-weight:500;margin-top:4px">Crea tu perfil</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 3 — PERFIL JUGADOR
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-perfil">
+<div class="profile-wrapper">
+  <div class="profile-hero-bg">
+    <div class="profile-top">
+      <div class="profile-av">VR</div>
+      <div style="flex:1">
+        <div class="profile-badges">
+          <span class="badge tag-lime">Pro</span>
+          <span class="badge tag-blue">NCAA Proyección</span>
+          <span class="badge tag-teal">UTR Verified</span>
+          <span class="badge tag-orange">Open a Sponsors</span>
+        </div>
+        <div class="profile-name">VALENTINA ROJAS</div>
+        <div class="profile-meta">
+          <span>🎾 Derecha · Diestra</span>
+          <span>•</span>
+          <span>📍 Santiago, Chile</span>
+          <span>•</span>
+          <span>🏛 Club Miraflores</span>
+          <span>•</span>
+          <span>🎂 17 años</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn btn-dark btn-sm">
+            <svg width="14" height="14" style="color:#e1306c"><use href="#ic-ig"/></svg> @valentina.tennis
+          </a>
+          <a class="btn btn-dark btn-sm">
+            <svg width="14" height="14" style="color:#ff0000"><use href="#ic-yt"/></svg> YouTube
+          </a>
+          <a class="btn btn-dark btn-sm">
+            <svg width="14" height="14" style="color:#C5E647"><use href="#ic-link"/></svg> UTR Sport
+          </a>
+          <a class="btn btn-lime btn-sm" onclick="openModal('modal-contacto')">Contactar</a>
+        </div>
+      </div>
+    </div>
+    <!-- Stats row -->
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-label">UTR Rating</div><div class="stat-val">10.2</div></div>
+      <div class="stat-card"><div class="stat-label">Ranking Nacional</div><div class="stat-val">#18</div></div>
+      <div class="stat-card"><div class="stat-label">Win Rate</div><div class="stat-val">87<span class="stat-unit">%</span></div></div>
+      <div class="stat-card"><div class="stat-label">Torneos 2025</div><div class="stat-val">24</div></div>
+    </div>
+  </div>
+
+  <div class="profile-body">
+    <!-- Main column -->
+    <div class="profile-main">
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this,'tab-overview')">Resumen</div>
+        <div class="tab" onclick="switchTab(this,'tab-matches')">Historial</div>
+        <div class="tab" onclick="switchTab(this,'tab-videos')">Videos</div>
+        <div class="tab" onclick="switchTab(this,'tab-essay')">
+          <svg width="12" height="12" style="color:var(--lime)"><use href="#ic-lock"/></svg>
+          Essay Privado
+        </div>
+        <div class="tab" onclick="switchTab(this,'tab-stats')">Estadísticas</div>
+      </div>
+
+      <!-- Tab: Overview -->
+      <div id="tab-overview" class="tab-content">
+        <div class="video-card">
+          <div class="video-header">Video destacado</div>
+          <div class="video-thumb" onclick="openModal('modal-video')">
+            <div class="play-btn"><svg width="18" height="18" style="color:var(--lime)"><use href="#ic-play"/></svg></div>
+            <div class="video-label">Partido Final — ITF Chile Open 2025</div>
+          </div>
+        </div>
+        <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px;margin-bottom:16px">
+          <div class="side-card-t">Sobre mí</div>
+          <p style="font-size:13px;color:var(--gray3);line-height:1.7">Jugadora santiaguina con 10 años de trayectoria en el tenis competitivo. Especialista en línea de base con un potente drive. Mi objetivo es obtener una beca deportiva en una universidad NCAA División I en EE.UU., combinando mis resultados en cancha con mis logros académicos (promedio 6.8). Actualmente entrenando con el Prof. Carlos Soto en Club Miraflores, 4h diarias.</p>
+        </div>
+        <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px">
+          <div class="side-card-t">Galería de fotos</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+            <div style="background:var(--b4);border-radius:6px;height:80px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray2)"><svg width="20" height="20"><use href="#ic-tennis"/></svg></div>
+            <div style="background:var(--b4);border-radius:6px;height:80px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray2)"><svg width="20" height="20"><use href="#ic-trophy"/></svg></div>
+            <div style="background:var(--b4);border-radius:6px;height:80px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray2)"><svg width="20" height="20"><use href="#ic-medal"/></svg></div>
+            <div style="background:var(--b4);border-radius:6px;height:80px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--lime)"><svg width="20" height="20"><use href="#ic-plus"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Match History -->
+      <div id="tab-matches" class="tab-content" style="display:none">
+        <table class="match-table">
+          <tr><th>Torneo</th><th>Fecha</th><th>Rival</th><th>Resultado</th><th>UTR ganado</th></tr>
+          <tr><td>ITF Chile Open</td><td>Mar 2025</td><td>García, M.</td><td><span class="win">V 6-3 6-2</span></td><td style="color:#22c55e">+0.3</td></tr>
+          <tr><td>Copa Providencia</td><td>Feb 2025</td><td>López, C.</td><td><span class="win">V 7-5 6-4</span></td><td style="color:#22c55e">+0.2</td></tr>
+          <tr><td>Nacional Junior</td><td>Ene 2025</td><td>Ramos, D.</td><td><span class="loss">D 4-6 3-6</span></td><td style="color:#ef4444">-0.1</td></tr>
+          <tr><td>Torneo Club Las Condes</td><td>Dic 2024</td><td>Vera, S.</td><td><span class="win">V 6-2 6-1</span></td><td style="color:#22c55e">+0.4</td></tr>
+          <tr><td>Copa Las Américas</td><td>Nov 2024</td><td>Torres, A.</td><td><span class="win">V 7-6 6-3</span></td><td style="color:#22c55e">+0.5</td></tr>
+          <tr><td>ITF J15 Santiago</td><td>Oct 2024</td><td>Chen, L.</td><td><span class="loss">D 5-7 6-3 4-6</span></td><td style="color:#ef4444">-0.2</td></tr>
+        </table>
+      </div>
+
+      <!-- Tab: Videos -->
+      <div id="tab-videos" class="tab-content" style="display:none">
+        <div class="grid-2" style="gap:12px">
+          <div class="video-card" onclick="openModal('modal-video')">
+            <div class="video-header">Partido semifinal</div>
+            <div class="video-thumb" style="height:160px"><div class="play-btn"><svg width="16" height="16" style="color:var(--lime)"><use href="#ic-play"/></svg></div><div class="video-label">ITF Chile Open — Feb 2025</div></div>
+          </div>
+          <div class="video-card" onclick="openModal('modal-video')">
+            <div class="video-header">Entrenamiento técnico</div>
+            <div class="video-thumb" style="height:160px"><div class="play-btn"><svg width="16" height="16" style="color:var(--lime)"><use href="#ic-play"/></svg></div><div class="video-label">Club Miraflores — Ene 2025</div></div>
+          </div>
+          <div class="video-card" onclick="openModal('modal-video')">
+            <div class="video-header">Servicio y volea</div>
+            <div class="video-thumb" style="height:160px"><div class="play-btn"><svg width="16" height="16" style="color:var(--lime)"><use href="#ic-play"/></svg></div><div class="video-label">Análisis técnico — Dic 2024</div></div>
+          </div>
+          <div class="video-card" style="border-style:dashed;cursor:pointer" onclick="openModal('modal-login')">
+            <div class="video-thumb" style="height:160px;background:transparent;border:none"><svg width="32" height="32" style="color:var(--gray2)"><use href="#ic-upload"/></svg><div style="font-size:12px;color:var(--muted);margin-top:8px">Subir video</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Private Essay -->
+      <div id="tab-essay" class="tab-content" style="display:none">
+        <div class="essay-lock">
+          <div class="essay-badge">
+            <svg width="12" height="12" style="color:var(--lime)"><use href="#ic-lock"/></svg>
+            Solo visible para Coaches Universitarios y Patrocinadores Verificados
+          </div>
+          <div style="margin-bottom:20px">
+            <div class="side-card-t" style="font-size:20px">Essay Personal</div>
+            <p style="font-size:12px;color:var(--muted)">Esta sección es privada. Los coaches NCAA, scouts universitarios y sponsors verificados pueden leer tu historia personal, motivaciones y objetivos académicos.</p>
+          </div>
+          <div class="essay-content">
+            <p style="margin-bottom:12px">Mi nombre es Valentina Rojas y tengo 17 años. Comencé a jugar tenis a los 7 años en el club de mi barrio en Ñuñoa, sin ninguna expectativa más que el disfrute del deporte. Nunca imaginé que esa primera lección con una raqueta prestada cambiaría el rumbo de mi vida.</p>
+            <p style="margin-bottom:12px">A los 12 años gané mi primer torneo nacional junior, y fue entonces cuando entendí que el tenis podía ser más que un hobby. Desde entonces he combinado el entrenamiento intensivo con un rendimiento académico sobresaliente. Actualmente mantengo un promedio de 6.8 en el Colegio Nido de Águilas, donde me especializo en matemáticas y ciencias.</p>
+            <p>Mi objetivo a corto plazo es ingresar a una universidad NCAA División I, donde pueda seguir desarrollándome como tenista de élite mientras obtengo una educación de clase mundial. A largo plazo, aspiro a competir en el circuito WTA y luego retribuir al tenis chileno como entrenadora o impulsando proyectos de desarrollo como Break Point.</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div style="flex:1;background:var(--b4);border-radius:var(--r);padding:14px">
+              <div style="font-size:10px;color:var(--muted);margin-bottom:4px">GPA equivalente</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">3.9 / 4.0</div>
+            </div>
+            <div style="flex:1;background:var(--b4);border-radius:var(--r);padding:14px">
+              <div style="font-size:10px;color:var(--muted);margin-bottom:4px">SAT Score</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">1380</div>
+            </div>
+            <div style="flex:1;background:var(--b4);border-radius:var(--r);padding:14px">
+              <div style="font-size:10px;color:var(--muted);margin-bottom:4px">TOEFL</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">98</div>
+            </div>
+            <div style="flex:1;background:var(--b4);border-radius:var(--r);padding:14px">
+              <div style="font-size:10px;color:var(--muted);margin-bottom:4px">Disponibilidad</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">Ago 2026</div>
+            </div>
+          </div>
+          <div style="margin-top:16px;text-align:left">
+            <button class="btn btn-lime" onclick="openModal('modal-contacto')">Contactar a Valentina</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Stats -->
+      <div id="tab-stats" class="tab-content" style="display:none">
+        <div class="grid-2">
+          <div class="dash-card">
+            <div class="dash-card-t">Evolución UTR</div>
+            <div class="bar-chart">
+              <div class="bar" style="height:40%"></div>
+              <div class="bar" style="height:52%"></div>
+              <div class="bar" style="height:58%"></div>
+              <div class="bar" style="height:64%"></div>
+              <div class="bar" style="height:72%"></div>
+              <div class="bar" style="height:80%"></div>
+              <div class="bar active-bar" style="height:88%"></div>
+            </div>
+            <div class="bar-labels">
+              <div class="bar-l">Jun</div><div class="bar-l">Jul</div><div class="bar-l">Ago</div>
+              <div class="bar-l">Sep</div><div class="bar-l">Oct</div><div class="bar-l">Nov</div><div class="bar-l">Dic</div>
+            </div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-t">Superficie favorita</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray3);margin-bottom:4px"><span>Polvo de ladrillo</span><span style="color:var(--lime)">68%</span></div><div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray3);margin-bottom:4px"><span>Dura</span><span style="color:var(--lime)">24%</span></div><div class="progress-bar"><div class="progress-fill" style="width:24%"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray3);margin-bottom:4px"><span>Hierba</span><span style="color:var(--lime)">8%</span></div><div class="progress-bar"><div class="progress-fill" style="width:8%"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="profile-sidebar">
+      <div class="side-card">
+        <div class="side-card-t">Información General</div>
+        <div class="info-row"><span class="lbl">Edad</span><span class="val">17 años</span></div>
+        <div class="info-row"><span class="lbl">Ciudad</span><span class="val">Santiago</span></div>
+        <div class="info-row"><span class="lbl">Mano hábil</span><span class="val">Diestra</span></div>
+        <div class="info-row"><span class="lbl">Golpe favorito</span><span class="val">Derecha</span></div>
+        <div class="info-row"><span class="lbl">Entrenador</span><span class="val">Prof. Carlos Soto</span></div>
+        <div class="info-row"><span class="lbl">Horas/semana</span><span class="val">28 hrs</span></div>
+      </div>
+      <div class="side-card">
+        <div class="side-card-t">Logros</div>
+        <div class="info-row"><span class="lbl">🥇 Campeona Nacional U18</span><span class="val">2024</span></div>
+        <div class="info-row"><span class="lbl">🥈 Final ITF Chile</span><span class="val">2025</span></div>
+        <div class="info-row"><span class="lbl">🏆 Copa Providencia</span><span class="val">2024</span></div>
+        <div class="info-row"><span class="lbl">🎓 Honor roll escolar</span><span class="val">2023-25</span></div>
+      </div>
+      <div class="side-card" style="border-color:rgba(197,230,71,0.2)">
+        <div class="side-card-t" style="color:var(--lime)">Disponible para Sponsor</div>
+        <div style="font-size:12px;color:var(--gray3);margin-bottom:14px;line-height:1.5">Valentina está abierta a propuestas de sponsorship. Alcance estimado: 8.200 seguidores en Instagram.</div>
+        <button class="btn btn-lime btn-sm" style="width:100%;justify-content:center" onclick="openModal('modal-contacto')">Proponer Sponsorship</button>
+      </div>
+      <div style="background:var(--b4);border:1px dashed var(--b5);border-radius:var(--rl);padding:20px;text-align:center;cursor:pointer;transition:border-color .2s" onclick="openModal('modal-login')">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px">¿Eres coach o empresa?</div>
+        <div style="font-size:12px;color:#fff">Ver essay privado</div>
+        <div style="font-size:10px;color:var(--gray2);margin-top:4px">Verificación requerida</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 4 — UNIVERSIDADES NCAA
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-universidades">
+<div class="dir-header">
+  <div class="sec-eye" style="margin-bottom:8px">Oportunidades</div>
+  <h2 class="sec-h2" style="font-size:36px;margin-bottom:16px">NCAA & UNIVERSIDADES</h2>
+  <div class="dir-search-row">
+    <div class="search-box">
+      <svg width="16" height="16" style="color:var(--gray3);flex-shrink:0"><use href="#ic-search"/></svg>
+      <input type="text" placeholder="Universidad, estado, tipo de beca...">
+    </div>
+    <span class="dir-count">127 coaches registrados</span>
+  </div>
+  <div class="filter-row">
+    <span class="filter-chip on">Todos</span>
+    <span class="filter-chip">NCAA D1</span>
+    <span class="filter-chip">NCAA D2</span>
+    <span class="filter-chip">NCAA D3</span>
+    <span class="filter-chip">NAIA</span>
+    <span class="filter-chip">NJCAA</span>
+    <span class="filter-chip">U. Chilenas</span>
+    <span class="filter-chip">Beca completa</span>
+    <span class="filter-chip">Beca parcial</span>
+    <span class="filter-chip">Busca damas</span>
+    <span class="filter-chip">Busca varones</span>
+  </div>
+</div>
+
+<!-- Leagues Info Banner -->
+<div style="padding:20px 48px 0">
+  <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--b4);border-radius:var(--rl);overflow:hidden">
+    <div style="background:var(--b2);padding:16px;text-align:center">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">NCAA D1</div>
+      <div style="font-size:10px;color:var(--muted);margin:4px 0">8 becas equipo</div>
+      <div style="font-size:11px;color:var(--gray3)">Hasta $70.000 USD/año</div>
+    </div>
+    <div style="background:var(--b2);padding:16px;text-align:center">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">NCAA D2</div>
+      <div style="font-size:10px;color:var(--muted);margin:4px 0">4.5 becas equipo</div>
+      <div style="font-size:11px;color:var(--gray3)">Hasta $35.000 USD/año</div>
+    </div>
+    <div style="background:var(--b2);padding:16px;text-align:center">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">NCAA D3</div>
+      <div style="font-size:10px;color:var(--muted);margin:4px 0">Sin becas deportivas</div>
+      <div style="font-size:11px;color:var(--gray3)">Apoyo académico</div>
+    </div>
+    <div style="background:var(--b2);padding:16px;text-align:center">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">NAIA</div>
+      <div style="font-size:10px;color:var(--muted);margin:4px 0">5 becas equipo</div>
+      <div style="font-size:11px;color:var(--gray3)">Hasta $25.000 USD/año</div>
+    </div>
+    <div style="background:var(--b2);padding:16px;text-align:center">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">NJCAA</div>
+      <div style="font-size:10px;color:var(--muted);margin:4px 0">9 becas equipo</div>
+      <div style="font-size:11px;color:var(--gray3)">Hasta $15.000 USD/año</div>
+    </div>
+  </div>
+</div>
+
+<div class="coaches-grid" style="margin-top:24px">
+  <div class="coach-card" onclick="openModal('modal-coach')">
+    <div class="coach-uni-logo" style="border-color:#0021A5;background:#0a0f2a;color:#60a5fa;font-size:11px">MIAMI</div>
+    <div class="coach-uni">University of Miami — NCAA D1</div>
+    <div class="coach-name">Coach Ryan Henderson</div>
+    <div class="coach-sport">Head Tennis Coach · Mujeres</div>
+    <div class="coach-tags">
+      <span class="badge tag-blue">NCAA D1</span>
+      <span class="badge tag-lime">Beca completa</span>
+      <span class="badge tag-teal">Busca jugadoras</span>
+    </div>
+    <div class="coach-info">
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-star"/></svg> UTR mínimo: 9.5 | GPA: 3.0+</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-medal"/></svg> 2 plazas disponibles 2026</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-tag"/></svg> Beca: $45.000–$65.000 USD/año</div>
+    </div>
+    <button class="btn btn-lime btn-sm coach-contact-btn" onclick="event.stopPropagation();openModal('modal-contacto')">Contactar Coach</button>
+  </div>
+
+  <div class="coach-card" onclick="openModal('modal-coach')">
+    <div class="coach-uni-logo" style="border-color:#C4122F;background:#1e0808;color:#f87171;font-size:10px">ROLLINS</div>
+    <div class="coach-uni">Rollins College — NCAA D2</div>
+    <div class="coach-name">Coach María Santos</div>
+    <div class="coach-sport">Tennis Coach · Ambos géneros</div>
+    <div class="coach-tags">
+      <span class="badge tag-purple">NCAA D2</span>
+      <span class="badge tag-orange">Beca parcial</span>
+    </div>
+    <div class="coach-info">
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-star"/></svg> UTR mínimo: 8.0 | GPA: 2.8+</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-medal"/></svg> 3 plazas disponibles 2026</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-tag"/></svg> Beca: $18.000–$32.000 USD/año</div>
+    </div>
+    <button class="btn btn-lime btn-sm coach-contact-btn" onclick="event.stopPropagation();openModal('modal-contacto')">Contactar Coach</button>
+  </div>
+
+  <div class="coach-card" onclick="openModal('modal-coach')">
+    <div class="coach-uni-logo" style="border-color:#C5E647;background:#1e2a12;color:#C5E647;font-size:9px">BAYLOR</div>
+    <div class="coach-uni">Baylor University — NCAA D1</div>
+    <div class="coach-name">Coach Michael Torres</div>
+    <div class="coach-sport">Asst. Coach · Varones</div>
+    <div class="coach-tags">
+      <span class="badge tag-blue">NCAA D1</span>
+      <span class="badge tag-lime">Beca completa</span>
+    </div>
+    <div class="coach-info">
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-star"/></svg> UTR mínimo: 11.0 | GPA: 3.2+</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-medal"/></svg> 1 plaza disponible 2026</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-tag"/></svg> Beca: $55.000–$70.000 USD/año</div>
+    </div>
+    <button class="btn btn-lime btn-sm coach-contact-btn" onclick="event.stopPropagation();openModal('modal-contacto')">Contactar Coach</button>
+  </div>
+
+  <div class="coach-card" onclick="openModal('modal-coach')">
+    <div class="coach-uni-logo" style="border-color:#fbbf24;background:#1e1400;color:#fbbf24;font-size:9px">UCH</div>
+    <div class="coach-uni">Universidad de Chile — Deportes</div>
+    <div class="coach-name">Prof. Felipe Arroyo</div>
+    <div class="coach-sport">Coordinador Tenis · Ambos géneros</div>
+    <div class="coach-tags">
+      <span class="badge tag-gold">U. Chilena</span>
+      <span class="badge tag-teal">Beca deportiva</span>
+    </div>
+    <div class="coach-info">
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-star"/></svg> UTR mínimo: 7.0 | NEM: 5.5+</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-medal"/></svg> 4 plazas disponibles 2026</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-tag"/></svg> Beca: Arancel completo + $120.000/mes</div>
+    </div>
+    <button class="btn btn-lime btn-sm coach-contact-btn" onclick="event.stopPropagation();openModal('modal-contacto')">Contactar Coach</button>
+  </div>
+
+  <div class="coach-card" onclick="openModal('modal-coach')">
+    <div class="coach-uni-logo" style="border-color:#a78bfa;background:#1a0a2a;color:#a78bfa;font-size:9px">NOVA</div>
+    <div class="coach-uni">Nova Southeastern — NAIA</div>
+    <div class="coach-name">Coach Jennifer Walsh</div>
+    <div class="coach-sport">Head Coach · Mujeres</div>
+    <div class="coach-tags">
+      <span class="badge tag-purple">NAIA</span>
+      <span class="badge tag-lime">Beca disponible</span>
+    </div>
+    <div class="coach-info">
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-star"/></svg> UTR mínimo: 7.5 | GPA: 2.5+</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-medal"/></svg> 2 plazas disponibles 2026</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-tag"/></svg> Beca: $12.000–$22.000 USD/año</div>
+    </div>
+    <button class="btn btn-lime btn-sm coach-contact-btn" onclick="event.stopPropagation();openModal('modal-contacto')">Contactar Coach</button>
+  </div>
+
+  <div class="coach-card" onclick="openModal('modal-coach')">
+    <div class="coach-uni-logo" style="border-color:#2dd4bf;background:#071e1a;color:#2dd4bf;font-size:9px">PUC</div>
+    <div class="coach-uni">Pontificia U. Católica — Deportes</div>
+    <div class="coach-name">Prof. Daniela Bravo</div>
+    <div class="coach-sport">Coordinadora Tenis · Mujeres</div>
+    <div class="coach-tags">
+      <span class="badge tag-teal">U. Chilena</span>
+      <span class="badge tag-lime">Beca disponible</span>
+    </div>
+    <div class="coach-info">
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-star"/></svg> UTR mínimo: 6.5 | NEM: 5.8+</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-medal"/></svg> 3 plazas disponibles 2026</div>
+      <div class="coach-info-row"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0"><use href="#ic-tag"/></svg> Beca: Arancel 50–100%</div>
+    </div>
+    <button class="btn btn-lime btn-sm coach-contact-btn" onclick="event.stopPropagation();openModal('modal-contacto')">Contactar Coach</button>
+  </div>
+</div>
+
+<!-- Intermediaries note -->
+<div style="padding:0 48px 48px">
+  <div style="background:var(--b3);border:1px solid rgba(197,230,71,0.15);border-radius:var(--rl);padding:20px;display:flex;gap:20px;align-items:flex-start">
+    <div class="feat-icon" style="flex-shrink:0"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-link"/></svg></div>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;margin-bottom:6px">Agencias Intermediarias</div>
+      <p style="font-size:12px;color:var(--gray3);line-height:1.6;margin-bottom:12px">Break Point trabaja con agencias especializadas en el proceso de reclutamiento universitario en EE.UU.: <strong style="color:#fff">CollegiateLink</strong>, <strong style="color:#fff">TenniusPath</strong>, <strong style="color:#fff">Global Sports Recruiting</strong> y <strong style="color:#fff">ITA Recruiting</strong>. Estas agencias pueden facilitar tu proceso de aplicación.</p>
+      <button class="btn btn-out btn-sm" onclick="openModal('modal-contacto')">Solicitar asesoría de agencia</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 5 — TORNEOS
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-torneos">
+<div class="dir-header">
+  <div class="sec-eye" style="margin-bottom:8px">Competencia</div>
+  <h2 class="sec-h2" style="font-size:36px;margin-bottom:16px">CALENDARIO DE TORNEOS</h2>
+  <div class="dir-search-row">
+    <div class="search-box">
+      <svg width="16" height="16" style="color:var(--gray3);flex-shrink:0"><use href="#ic-search"/></svg>
+      <input type="text" placeholder="Torneo, ciudad, categoría...">
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;margin-left:auto">
+      <span style="font-size:11px;color:var(--muted)">Fuentes:</span>
+      <span class="badge tag-lime">TenisChile</span>
+      <span class="badge tag-blue">ITF</span>
+      <span class="badge tag-teal">UTR Sport</span>
+      <span class="badge tag-orange">TenisCL</span>
+    </div>
+  </div>
+  <div class="filter-row">
+    <span class="filter-chip on">Todos</span>
+    <span class="filter-chip">ITF Junior</span>
+    <span class="filter-chip">ITF Senior</span>
+    <span class="filter-chip">Nacional</span>
+    <span class="filter-chip">Regional</span>
+    <span class="filter-chip">UTR Pro</span>
+    <span class="filter-chip">Damas</span>
+    <span class="filter-chip">Varones</span>
+    <span class="filter-chip">Dobles</span>
+    <span class="filter-chip">Con premio</span>
+  </div>
+</div>
+<div class="tournament-list" id="tournament-list">
+  <div style="padding:40px;text-align:center;color:var(--muted)">Cargando torneos…</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 6 — ENTRENADORES CHILE
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-entrenadores">
+<div class="dir-header">
+  <div class="sec-eye" style="margin-bottom:8px">Desarrollo</div>
+  <h2 class="sec-h2" style="font-size:36px;margin-bottom:16px">ENTRENADORES & COACHES</h2>
+  <div class="dir-search-row">
+    <div class="search-box">
+      <svg width="16" height="16" style="color:var(--gray3);flex-shrink:0"><use href="#ic-search"/></svg>
+      <input type="text" placeholder="Nombre, ciudad, especialidad...">
+    </div>
+    <span class="dir-count">68 entrenadores</span>
+  </div>
+  <div class="filter-row">
+    <span class="filter-chip on">Todos</span>
+    <span class="filter-chip">Junior</span>
+    <span class="filter-chip">Alto rendimiento</span>
+    <span class="filter-chip">Amateur</span>
+    <span class="filter-chip">Con cancha</span>
+    <span class="filter-chip">Online también</span>
+    <span class="filter-chip">Santiago</span>
+    <span class="filter-chip">Regiones</span>
+  </div>
+</div>
+<div style="padding:24px 48px;display:flex;flex-direction:column;gap:12px">
+  <div class="pro-card" onclick="openModal('modal-contacto')">
+    <div class="pro-av" style="border-color:#C5E647;background:#1e2a12;color:#C5E647">CS</div>
+    <div style="flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="pro-name">Carlos Soto</div>
+          <div class="pro-title">Coach ATP certificado · Alto rendimiento</div>
+        </div>
+        <div style="display:flex;gap:4px;flex-shrink:0">
+          <span class="badge tag-lime">Pro</span>
+          <div style="display:flex;align-items:center;gap:2px;font-size:11px;color:var(--lime)">★ 4.9</div>
+        </div>
+      </div>
+      <div class="pro-desc">15 años entrenando jugadores profesionales y de alto rendimiento. Ex jugador ATP rankeado 320 del mundo. Especialista en preparación para NCAA y torneos ITF. Trabaja desde Club Miraflores en Santiago.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+        <span class="badge tag-gray">Santiago</span>
+        <span class="badge tag-blue">ITF</span>
+        <span class="badge tag-teal">NCAA prep</span>
+        <span class="badge tag-orange">Junior</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--lime)">$45.000<span style="font-size:12px;color:var(--muted);font-family:'Inter',sans-serif">/hora</span></div>
+        <button class="btn btn-lime btn-sm">Contactar</button>
+        <button class="btn btn-ghost btn-sm">Ver perfil</button>
+      </div>
+    </div>
+  </div>
+  <div class="pro-card" onclick="openModal('modal-contacto')">
+    <div class="pro-av" style="border-color:#a78bfa;background:#1a0a2a;color:#a78bfa">MV</div>
+    <div style="flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="pro-name">Marcela Vásquez</div>
+          <div class="pro-title">Entrenadora FEDETCH certificada · Junior & Amateur</div>
+        </div>
+        <div style="display:flex;gap:4px;flex-shrink:0">
+          <span class="badge tag-purple">Destacada</span>
+          <div style="display:flex;align-items:center;gap:2px;font-size:11px;color:var(--lime)">★ 4.8</div>
+        </div>
+      </div>
+      <div class="pro-desc">Especialista en formación de jugadores juveniles. 12 años de experiencia, ha llevado a 8 jugadores a becas universitarias en EE.UU. Clases individuales y grupales en Viña del Mar.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+        <span class="badge tag-gray">Viña del Mar</span>
+        <span class="badge tag-teal">NCAA prep</span>
+        <span class="badge tag-lime">Junior</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--lime)">$35.000<span style="font-size:12px;color:var(--muted);font-family:'Inter',sans-serif">/hora</span></div>
+        <button class="btn btn-lime btn-sm">Contactar</button>
+        <button class="btn btn-ghost btn-sm">Ver perfil</button>
+      </div>
+    </div>
+  </div>
+  <div class="pro-card" onclick="openModal('modal-contacto')">
+    <div class="pro-av" style="border-color:#fb923c;background:#1e1000;color:#fb923c">JP</div>
+    <div style="flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="pro-name">Juan Pablo Arriagada</div>
+          <div class="pro-title">Coach de alto rendimiento · Ex ITF</div>
+        </div>
+        <div style="display:flex;gap:4px;flex-shrink:0">
+          <div style="display:flex;align-items:center;gap:2px;font-size:11px;color:var(--lime)">★ 4.7</div>
+        </div>
+      </div>
+      <div class="pro-desc">Especialidad en análisis de video y desarrollo técnico. Trabaja principalmente con jugadores de proyección profesional. Disponible en Concepción y Santiago (2 semanas/mes).</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+        <span class="badge tag-gray">Concepción</span>
+        <span class="badge tag-blue">Pro</span>
+        <span class="badge tag-orange">Video análisis</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--lime)">$55.000<span style="font-size:12px;color:var(--muted);font-family:'Inter',sans-serif">/hora</span></div>
+        <button class="btn btn-lime btn-sm">Contactar</button>
+        <button class="btn btn-ghost btn-sm">Ver perfil</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 7 — PATROCINADORES
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-patrocinadores">
+<div style="padding-top:60px">
+  <div style="background:var(--b2);padding:80px 48px 40px;border-bottom:1px solid var(--b4)">
+    <div class="sec-eye">Oportunidades de negocio</div>
+    <h2 class="sec-h2">PATROCINA<br>EL TENIS<br><span style="color:var(--lime)">CHILENO</span></h2>
+    <p style="font-size:15px;color:var(--gray3);max-width:520px;line-height:1.7;margin-bottom:32px">Conecta tu marca con 850+ tenistas activos, sus familias y la comunidad tennística. Alcance real, retorno medible y beneficios tributarios.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <button class="btn btn-lime btn-lg" onclick="openModal('modal-sponsor')">Quiero patrocinar</button>
+      <button class="btn btn-ghost btn-lg" onclick="openModal('modal-roi')">Calcular ROI</button>
+    </div>
+    <div style="display:flex;gap:36px;margin-top:40px">
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--lime)">850+</div><div style="font-size:11px;color:var(--muted)">Tenistas activos</div></div>
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--lime)">120K+</div><div style="font-size:11px;color:var(--muted)">Seguidores combinados</div></div>
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--lime)">45</div><div style="font-size:11px;color:var(--muted)">Torneos al año</div></div>
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--lime)">14</div><div style="font-size:11px;color:var(--muted)">Regiones de Chile</div></div>
+    </div>
+  </div>
+
+  <!-- Sponsor packages -->
+  <section class="sec">
+    <div class="sec-eye">Paquetes</div>
+    <h2 class="sec-h2" style="margin-bottom:32px">ELIGE TU<br>PAQUETE</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px">
+      <div class="sp-card">
+        <div class="sp-icon"><svg width="22" height="22" style="color:var(--lime)"><use href="#ic-medal"/></svg></div>
+        <div class="sp-t">Sponsor Bronze</div>
+        <div class="sp-d">Patrociná a 1 jugador emergente. Perfecto para PyMEs y marcas locales que quieren visibilidad inicial en la comunidad tennística.</div>
+        <div class="sp-price">$300.000</div><div class="sp-price-l">/ mes · CLP</div>
+        <ul style="list-style:none;margin:14px 0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Logo en perfil del jugador</li>
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> 2 menciones Instagram/mes</li>
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Reporte de alcance mensual</li>
+        </ul>
+        <button class="btn btn-dark btn-sm" style="width:100%;justify-content:center" onclick="openModal('modal-sponsor')">Contratar</button>
+      </div>
+      <div class="sp-card" style="border-color:rgba(197,230,71,0.4)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div class="sp-icon"><svg width="22" height="22" style="color:var(--lime)"><use href="#ic-trophy"/></svg></div>
+          <span class="badge tag-lime">RECOMENDADO</span>
+        </div>
+        <div class="sp-t">Sponsor Silver</div>
+        <div class="sp-d">Patrocina a un equipo de 3–5 jugadores. Mayor exposición y presencia en torneos nacionales con tu marca visible en cancha.</div>
+        <div class="sp-price">$900.000</div><div class="sp-price-l">/ mes · CLP</div>
+        <ul style="list-style:none;margin:14px 0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Equipo de 3–5 jugadores</li>
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Presencia en torneos</li>
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Story semanal con mención</li>
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Dashboard de ROI</li>
+        </ul>
+        <button class="btn btn-lime btn-sm" style="width:100%;justify-content:center" onclick="openModal('modal-sponsor')">Contratar</button>
+      </div>
+      <div class="sp-card">
+        <div class="sp-icon"><svg width="22" height="22" style="color:var(--lime)"><use href="#ic-star"/></svg></div>
+        <div class="sp-t">Sponsor Gold</div>
+        <div class="sp-d">Naming rights de torneos, branding total del equipo y acceso exclusivo a los mejores jugadores para campañas publicitarias.</div>
+        <div class="sp-price">A convenir</div><div class="sp-price-l">Paquete premium</div>
+        <ul style="list-style:none;margin:14px 0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Naming rights de torneos</li>
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Branding completo del equipo</li>
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Campañas publicitarias</li>
+          <li style="font-size:11px;color:var(--gray3);display:flex;gap:6px"><svg width="12" height="12" style="color:var(--lime);flex-shrink:0;margin-top:2px"><use href="#ic-check"/></svg> Exención tributaria Art. 31</li>
+        </ul>
+        <button class="btn btn-out btn-sm" style="width:100%;justify-content:center" onclick="openModal('modal-contacto')">Hablar con nosotros</button>
+      </div>
+    </div>
+
+    <!-- Tax & ROI table -->
+    <div class="sec-eye">Beneficios tributarios & RSE</div>
+    <h2 class="sec-h2" style="margin-bottom:16px;font-size:36px">¿POR QUÉ<br>PATROCINAR?</h2>
+    <div class="grid-2" style="gap:20px;margin-bottom:32px">
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:24px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;margin-bottom:16px">Beneficios Tributarios</div>
+        <div class="info-row"><span class="lbl">Art. 31 Ley de Renta</span><span class="val" style="color:var(--lime)">Gasto deducible</span></div>
+        <div class="info-row"><span class="lbl">Donaciones deportivas</span><span class="val" style="color:var(--lime)">Crédito tributario 50%</span></div>
+        <div class="info-row"><span class="lbl">Ley de Donaciones (20.045)</span><span class="val" style="color:var(--lime)">Hasta 5% renta líquida</span></div>
+        <div class="info-row"><span class="lbl">Inversión RSE</span><span class="val" style="color:var(--lime)">Impacto social medible</span></div>
+        <div style="margin-top:12px;padding:10px;background:rgba(197,230,71,0.06);border:1px solid rgba(197,230,71,0.15);border-radius:var(--r);font-size:11px;color:var(--gray3)">💡 Por cada $1.000.000 CLP en sponsorship, la empresa puede deducir hasta $500.000 en impuestos según la normativa vigente.</div>
+      </div>
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:24px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#fff;margin-bottom:16px">ROI Estimado</div>
+        <table class="roi-table">
+          <tr><th>Paquete</th><th>Inversión/mes</th><th>Alcance</th><th>CPM est.</th></tr>
+          <tr><td>Bronze</td><td>$300.000</td><td>8K–15K</td><td>$25.000</td></tr>
+          <tr><td>Silver</td><td>$900.000</td><td>35K–60K</td><td>$18.000</td></tr>
+          <tr><td>Gold</td><td>Custom</td><td>120K+</td><td>$12.000</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Current sponsors grid -->
+    <div class="sec-eye">Patrocinadores actuales</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px">
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--lime);margin-bottom:4px">Wilson</div>
+        <div style="font-size:9px;color:var(--muted)">Raquetas oficiales</div>
+      </div>
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--lime);margin-bottom:4px">Enex</div>
+        <div style="font-size:9px;color:var(--muted)">Energía oficial</div>
+      </div>
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--lime);margin-bottom:4px">Babolat</div>
+        <div style="font-size:9px;color:var(--muted)">Cuerdas · pelotas</div>
+      </div>
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--lime);margin-bottom:4px">Claro</div>
+        <div style="font-size:9px;color:var(--muted)">Telecomunicaciones</div>
+      </div>
+      <div style="background:var(--b4);border:1px dashed var(--b5);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer" onclick="openModal('modal-sponsor')">
+        <div style="font-size:11px;color:var(--muted)">Tu empresa</div>
+        <div style="font-size:12px;color:var(--lime);margin-top:4px">+ Patrocinar</div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 8 — CLUBES CHILE
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-clubes">
+<div class="dir-header">
+  <div class="sec-eye" style="margin-bottom:8px">Red de Canchas</div>
+  <h2 class="sec-h2" style="font-size:36px;margin-bottom:16px">CLUBES DE TENIS CHILE</h2>
+  <div class="dir-search-row">
+    <div class="search-box">
+      <svg width="16" height="16" style="color:var(--gray3);flex-shrink:0"><use href="#ic-search"/></svg>
+      <input type="text" placeholder="Club, ciudad, superficie...">
+    </div>
+    <span class="dir-count">134 clubes</span>
+  </div>
+  <div class="filter-row">
+    <span class="filter-chip on">Todos</span>
+    <span class="filter-chip">Polvo de ladrillo</span>
+    <span class="filter-chip">Dura</span>
+    <span class="filter-chip">Hierba</span>
+    <span class="filter-chip">Techado</span>
+    <span class="filter-chip">Santiago</span>
+    <span class="filter-chip">Valparaíso</span>
+    <span class="filter-chip">Biobío</span>
+    <span class="filter-chip">Clases disponibles</span>
+  </div>
+</div>
+<div class="grid-3" style="padding:24px 48px 48px;gap:14px">
+  <div class="club-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+      <div class="club-name">Club de Tenis Miraflores</div>
+      <div class="rating-stars">★★★★★</div>
+    </div>
+    <div class="club-loc">📍 Providencia, Santiago · Metro Baquedano</div>
+    <div class="club-info-mini">
+      <div class="cim"><span>Canchas:</span><span style="color:#fff">12 (8 ladrillo · 4 dura)</span></div>
+      <div class="cim"><span>Horario:</span><span style="color:#fff">7:00 – 22:00</span></div>
+      <div class="cim"><span>Tarifa:</span><span style="color:var(--lime)">$8.000–$12.000/hr</span></div>
+      <div class="cim"><span>Iluminación:</span><span style="color:#22c55e">Disponible</span></div>
+    </div>
+    <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px">
+      <span class="badge tag-lime">Asociado Break Point</span>
+      <span class="badge tag-gray">Estacionamiento</span>
+      <span class="badge tag-teal">Clases</span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime btn-sm" style="flex:1;justify-content:center" onclick="openModal('modal-contacto')">Reservar</button>
+      <button class="btn btn-ghost btn-sm">Ver más</button>
+    </div>
+  </div>
+  <div class="club-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+      <div class="club-name">CT La Reina</div>
+      <div class="rating-stars">★★★★☆</div>
+    </div>
+    <div class="club-loc">📍 La Reina, Santiago</div>
+    <div class="club-info-mini">
+      <div class="cim"><span>Canchas:</span><span style="color:#fff">8 (ladrillo)</span></div>
+      <div class="cim"><span>Horario:</span><span style="color:#fff">8:00 – 21:00</span></div>
+      <div class="cim"><span>Tarifa:</span><span style="color:var(--lime)">$7.000–$10.000/hr</span></div>
+      <div class="cim"><span>Iluminación:</span><span style="color:#22c55e">Disponible</span></div>
+    </div>
+    <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px">
+      <span class="badge tag-gray">Cafetería</span>
+      <span class="badge tag-teal">Clases</span>
+      <span class="badge tag-blue">Techado</span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime btn-sm" style="flex:1;justify-content:center" onclick="openModal('modal-contacto')">Reservar</button>
+      <button class="btn btn-ghost btn-sm">Ver más</button>
+    </div>
+  </div>
+  <div class="club-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+      <div class="club-name">Prince Tennis Club</div>
+      <div class="rating-stars">★★★★★</div>
+    </div>
+    <div class="club-loc">📍 Vitacura, Santiago</div>
+    <div class="club-info-mini">
+      <div class="cim"><span>Canchas:</span><span style="color:#fff">16 (mixed)</span></div>
+      <div class="cim"><span>Horario:</span><span style="color:#fff">7:00 – 23:00</span></div>
+      <div class="cim"><span>Tarifa:</span><span style="color:var(--lime)">$12.000–$18.000/hr</span></div>
+      <div class="cim"><span>Academia:</span><span style="color:#22c55e">Sí</span></div>
+    </div>
+    <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px">
+      <span class="badge tag-lime">Asociado Break Point</span>
+      <span class="badge tag-purple">Academia élite</span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime btn-sm" style="flex:1;justify-content:center" onclick="openModal('modal-contacto')">Reservar</button>
+      <button class="btn btn-ghost btn-sm">Ver más</button>
+    </div>
+  </div>
+  <div class="club-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+      <div class="club-name">CT Recreo</div>
+      <div class="rating-stars">★★★★☆</div>
+    </div>
+    <div class="club-loc">📍 Viña del Mar, Valparaíso</div>
+    <div class="club-info-mini">
+      <div class="cim"><span>Canchas:</span><span style="color:#fff">10 (ladrillo)</span></div>
+      <div class="cim"><span>Horario:</span><span style="color:#fff">8:00 – 20:00</span></div>
+      <div class="cim"><span>Tarifa:</span><span style="color:var(--lime)">$6.000–$9.000/hr</span></div>
+    </div>
+    <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px">
+      <span class="badge tag-gray">Vista al mar</span>
+      <span class="badge tag-teal">Clases</span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime btn-sm" style="flex:1;justify-content:center" onclick="openModal('modal-contacto')">Reservar</button>
+      <button class="btn btn-ghost btn-sm">Ver más</button>
+    </div>
+  </div>
+  <div class="club-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+      <div class="club-name">CT Biobío</div>
+      <div class="rating-stars">★★★☆☆</div>
+    </div>
+    <div class="club-loc">📍 Concepción</div>
+    <div class="club-info-mini">
+      <div class="cim"><span>Canchas:</span><span style="color:#fff">6 (ladrillo)</span></div>
+      <div class="cim"><span>Horario:</span><span style="color:#fff">9:00 – 20:00</span></div>
+      <div class="cim"><span>Tarifa:</span><span style="color:var(--lime)">$5.000–$7.000/hr</span></div>
+    </div>
+    <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px">
+      <span class="badge tag-gray">Familiar</span>
+      <span class="badge tag-blue">Torneos locales</span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime btn-sm" style="flex:1;justify-content:center" onclick="openModal('modal-contacto')">Reservar</button>
+      <button class="btn btn-ghost btn-sm">Ver más</button>
+    </div>
+  </div>
+  <div class="club-card" style="border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer" onclick="openModal('modal-admin')">
+    <svg width="28" height="28" style="color:var(--gray2);margin-bottom:10px"><use href="#ic-map"/></svg>
+    <div style="font-size:12px;color:var(--muted)">¿Tienes un club?</div>
+    <div style="font-size:13px;color:#fff;font-weight:500;margin-top:4px">Agregar club</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 9 — TIENDAS & MERCADO EQUIPOS
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-tiendas">
+<div style="padding-top:60px">
+  <div class="dir-header" style="position:relative">
+    <div class="sec-eye" style="margin-bottom:8px">Equipamiento</div>
+    <h2 class="sec-h2" style="font-size:36px;margin-bottom:16px">TIENDAS & MERCADO</h2>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(this,'tab-tiendas')">Tiendas especializadas</div>
+      <div class="tab" onclick="switchTab(this,'tab-mercado')">Equipos usados</div>
+      <div class="tab" onclick="switchTab(this,'tab-descuentos')">Descuentos socios</div>
+    </div>
+  </div>
+
+  <!-- Tiendas -->
+  <div id="tab-tiendas" class="tab-content" style="padding:24px 48px">
+    <div class="grid-3" style="gap:14px">
+      <div class="club-card">
+        <div class="club-name">Wilson Chile Store</div>
+        <div class="club-loc">📍 Mall Costanera Center · Online</div>
+        <div class="club-info-mini">
+          <div class="cim"><span>Especialidad:</span><span style="color:#fff">Raquetas & cuerdas</span></div>
+          <div class="cim"><span>Descuento socios:</span><span style="color:var(--lime)">15% OFF</span></div>
+          <div class="cim"><span>Encordado:</span><span style="color:#22c55e">Disponible</span></div>
+        </div>
+        <div style="margin-bottom:12px;display:flex;gap:4px"><span class="badge tag-lime">Partner</span><span class="badge tag-gray">Wilson certified</span></div>
+        <button class="btn btn-lime btn-sm" style="width:100%;justify-content:center" onclick="openModal('modal-contacto')">Ver descuento</button>
+      </div>
+      <div class="club-card">
+        <div class="club-name">Babolat Tennis Chile</div>
+        <div class="club-loc">📍 Las Condes · Online</div>
+        <div class="club-info-mini">
+          <div class="cim"><span>Especialidad:</span><span style="color:#fff">Pelotas & calzado</span></div>
+          <div class="cim"><span>Descuento socios:</span><span style="color:var(--lime)">20% OFF</span></div>
+          <div class="cim"><span>Prueba gratis:</span><span style="color:#22c55e">Sí</span></div>
+        </div>
+        <div style="margin-bottom:12px;display:flex;gap:4px"><span class="badge tag-lime">Partner</span></div>
+        <button class="btn btn-lime btn-sm" style="width:100%;justify-content:center" onclick="openModal('modal-contacto')">Ver descuento</button>
+      </div>
+      <div class="club-card">
+        <div class="club-name">Tennis World</div>
+        <div class="club-loc">📍 Providencia + online</div>
+        <div class="club-info-mini">
+          <div class="cim"><span>Especialidad:</span><span style="color:#fff">Equipamiento completo</span></div>
+          <div class="cim"><span>Descuento socios:</span><span style="color:var(--lime)">12% OFF</span></div>
+          <div class="cim"><span>Arriendo raquetas:</span><span style="color:#22c55e">Sí</span></div>
+        </div>
+        <div style="margin-bottom:12px;display:flex;gap:4px"><span class="badge tag-gray">Marketplace</span></div>
+        <button class="btn btn-lime btn-sm" style="width:100%;justify-content:center" onclick="openModal('modal-contacto')">Ver descuento</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mercado equipos usados -->
+  <div id="tab-mercado" class="tab-content" style="display:none;padding:24px 48px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div>
+        <div style="font-size:11px;color:var(--muted)">48 publicaciones activas</div>
+      </div>
+      <button class="btn btn-lime btn-sm" onclick="openModal('modal-vender')">
+        <svg width="14" height="14"><use href="#ic-plus"/></svg> Publicar equipo
+      </button>
+    </div>
+    <div class="grid-4" style="gap:14px">
+      <div class="item-card">
+        <div class="item-img"><svg width="40" height="40" style="color:var(--gray2)"><use href="#ic-tennis"/></svg><div style="position:absolute;top:8px;left:8px"><span class="badge tag-lime">Venta</span></div></div>
+        <div class="item-body">
+          <div class="item-name">Wilson Pro Staff 97 v14</div>
+          <div class="item-sub">Estado: Excelente · 3 meses uso</div>
+          <div class="item-price">$85.000</div>
+          <div class="item-user"><div class="pc-av" style="width:20px;height:20px;font-size:8px;border-color:var(--lime);background:#1e2a12;color:var(--lime)">VR</div> Valentina R.</div>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="item-img"><svg width="40" height="40" style="color:var(--gray2)"><use href="#ic-tennis"/></svg><div style="position:absolute;top:8px;left:8px"><span class="badge tag-blue">Intercambio</span></div></div>
+        <div class="item-body">
+          <div class="item-name">Babolat Pure Aero 2024</div>
+          <div class="item-sub">Estado: Bueno · 6 meses uso</div>
+          <div class="item-price">$95.000</div>
+          <div class="item-user"><div class="pc-av" style="width:20px;height:20px;font-size:8px;border-color:#a78bfa;background:#1a0a2a;color:#a78bfa">MF</div> Matías F.</div>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="item-img"><svg width="40" height="40" style="color:var(--gray2)"><use href="#ic-tennis"/></svg><div style="position:absolute;top:8px;left:8px"><span class="badge tag-lime">Venta</span></div></div>
+        <div class="item-body">
+          <div class="item-name">Head Speed MP 2023</div>
+          <div class="item-sub">Estado: Muy bueno · 4 meses</div>
+          <div class="item-price">$72.000</div>
+          <div class="item-user"><div class="pc-av" style="width:20px;height:20px;font-size:8px;border-color:#2dd4bf;background:#071e1a;color:#2dd4bf">CP</div> Carlos P.</div>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="item-img" style="cursor:pointer" onclick="openModal('modal-vender')">
+          <svg width="32" height="32" style="color:var(--gray2)"><use href="#ic-plus"/></svg>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px">Publicar</div>
+        </div>
+        <div class="item-body">
+          <div style="font-size:12px;color:var(--muted)">¿Tienes equipos que ya no usas?</div>
+          <button class="btn btn-lime btn-sm" style="margin-top:8px" onclick="openModal('modal-vender')">Publicar equipo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Descuentos -->
+  <div id="tab-descuentos" class="tab-content" style="display:none;padding:24px 48px">
+    <div style="background:rgba(197,230,71,0.06);border:1px solid rgba(197,230,71,0.15);border-radius:var(--rl);padding:20px;margin-bottom:20px;display:flex;gap:16px;align-items:center">
+      <div class="feat-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-gift"/></svg></div>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:4px">Descuentos exclusivos para socios Break Point</div>
+        <div style="font-size:12px;color:var(--gray3)">Con suscripción Pro o Elite accedes a descuentos en tiendas, academias y servicios asociados.</div>
+      </div>
+      <button class="btn btn-lime btn-sm" style="flex-shrink:0" onclick="openModal('modal-login')">Activar Pro</button>
+    </div>
+    <div class="grid-3" style="gap:12px">
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:18px">
+        <div style="font-size:11px;color:var(--lime);margin-bottom:4px">Wilson Chile</div>
+        <div style="font-size:20px;font-family:'Bebas Neue',sans-serif;color:#fff;margin-bottom:4px">15% OFF</div>
+        <div style="font-size:11px;color:var(--muted)">En toda la tienda · Código BPTENNIS15</div>
+      </div>
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:18px">
+        <div style="font-size:11px;color:var(--lime);margin-bottom:4px">Babolat</div>
+        <div style="font-size:20px;font-family:'Bebas Neue',sans-serif;color:#fff;margin-bottom:4px">20% OFF</div>
+        <div style="font-size:11px;color:var(--muted)">Pelotas y cuerdas · Código BPBAB20</div>
+      </div>
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:18px">
+        <div style="font-size:11px;color:var(--lime);margin-bottom:4px">Club Miraflores</div>
+        <div style="font-size:20px;font-family:'Bebas Neue',sans-serif;color:#fff;margin-bottom:4px">2 hrs gratis</div>
+        <div style="font-size:11px;color:var(--muted)">Primer mes · Presentar carnet BP</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 10 — PSICÓLOGOS DEPORTIVOS
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-psicologos">
+<div class="dir-header">
+  <div class="sec-eye" style="margin-bottom:8px">Rendimiento Mental</div>
+  <h2 class="sec-h2" style="font-size:36px;margin-bottom:16px">PSICÓLOGOS DEPORTIVOS</h2>
+  <div class="dir-search-row">
+    <div class="search-box">
+      <svg width="16" height="16" style="color:var(--gray3);flex-shrink:0"><use href="#ic-search"/></svg>
+      <input type="text" placeholder="Nombre, especialidad, modalidad...">
+    </div>
+    <span class="dir-count">22 profesionales</span>
+  </div>
+  <div class="filter-row">
+    <span class="filter-chip on">Todos</span>
+    <span class="filter-chip">Online</span>
+    <span class="filter-chip">Presencial</span>
+    <span class="filter-chip">Junior</span>
+    <span class="filter-chip">Elite</span>
+    <span class="filter-chip">Santiago</span>
+  </div>
+</div>
+<div style="padding:24px 48px 48px;display:flex;flex-direction:column;gap:12px">
+  <div class="pro-card" onclick="openModal('modal-contacto')">
+    <div class="pro-av" style="border-color:#a78bfa;background:#1a0a2a;color:#a78bfa">PS</div>
+    <div style="flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="pro-name">Dra. Patricia Saavedra</div>
+          <div class="pro-title">Psicóloga del deporte · Doctora en Ciencias del Deporte UAI</div>
+        </div>
+        <div style="display:flex;gap:4px"><span class="badge tag-purple">Destacada</span><div style="font-size:11px;color:var(--lime)">★ 5.0</div></div>
+      </div>
+      <div class="pro-desc">Especialista en rendimiento mental para deportes de raqueta. 15 años trabajando con jugadores ITF y WTA. Experta en manejo de presión en torneos, visualización y rutinas de preparación precompetitiva. Sesiones online y presenciales en Santiago.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+        <span class="badge tag-gray">Santiago · Online</span>
+        <span class="badge tag-purple">ITF</span>
+        <span class="badge tag-teal">Elite</span>
+        <span class="badge tag-blue">Junior</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">$60.000<span style="font-size:11px;color:var(--muted);font-family:'Inter',sans-serif">/sesión</span></div>
+        <button class="btn btn-lime btn-sm">Agendar sesión</button>
+        <button class="btn btn-ghost btn-sm">Ver perfil</button>
+      </div>
+    </div>
+  </div>
+  <div class="pro-card" onclick="openModal('modal-contacto')">
+    <div class="pro-av" style="border-color:#2dd4bf;background:#071e1a;color:#2dd4bf">RM</div>
+    <div style="flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="pro-name">Roberto Medina</div>
+          <div class="pro-title">Psicólogo deportivo · Especialista en tenis junior</div>
+        </div>
+        <div style="font-size:11px;color:var(--lime)">★ 4.8</div>
+      </div>
+      <div class="pro-desc">10 años trabajando con academias de tenis y padres de jugadores jóvenes. Especialista en gestión de ansiedad competitiva, motivación y balance escuela-deporte. Precio especial para jugadores Sub-16.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+        <span class="badge tag-gray">Viña del Mar · Online</span>
+        <span class="badge tag-lime">Junior U16</span>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--lime)">$45.000<span style="font-size:11px;color:var(--muted);font-family:'Inter',sans-serif">/sesión</span></div>
+        <button class="btn btn-lime btn-sm">Agendar sesión</button>
+        <button class="btn btn-ghost btn-sm">Ver perfil</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 11 — HISTORIAS DE ÉXITO
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-historias">
+<div style="padding-top:80px">
+  <div class="sec">
+    <div class="sec-eye">Inspiración</div>
+    <h2 class="sec-h2">HISTORIAS<br>QUE INSPIRAN</h2>
+    <p class="sec-sub">Jugadores chilenos que transformaron su talento en oportunidades reales. Sus historias son el motor de Break Point.</p>
+    <div class="grid-3" style="gap:16px">
+      <div class="story-card">
+        <div class="story-top" style="background:linear-gradient(135deg,#0d1f0d,#1a3a1a)">
+          <div class="story-overlay"></div>
+          <div>
+            <div class="story-name">Valentina Rojas</div>
+            <div class="story-title">UTR 10.2 · Santiago · 17 años</div>
+          </div>
+        </div>
+        <div class="story-body">
+          <div class="story-uni">🏛 University of Miami — NCAA D1 · Beca completa</div>
+          <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap"><span class="badge tag-lime">Beca 100%</span><span class="badge tag-blue">D1</span></div>
+          <div class="story-quote">"Nunca imaginé que un perfil en una plataforma podía abrirme las puertas de una universidad como Miami. El essay privado fue lo que realmente convenció al coach Henderson."</div>
+          <div style="margin-top:12px;font-size:10px;color:var(--muted)">Break Point member desde 2024 · Conexión lograda en 3 semanas</div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-top" style="background:linear-gradient(135deg,#0a0a1e,#1a1a3a)">
+          <div class="story-overlay"></div>
+          <div>
+            <div class="story-name">Matías Fuentes</div>
+            <div class="story-title">UTR 12.1 · Concepción · 19 años</div>
+          </div>
+        </div>
+        <div class="story-body">
+          <div class="story-uni">🏆 ATP Futures · Primer sponsor a los 17 años</div>
+          <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap"><span class="badge tag-orange">ATP</span><span class="badge tag-teal">Patrocinado</span></div>
+          <div class="story-quote">"Tengo a Enex como patrocinador. Gracias a mi perfil en Break Point, ellos pudieron ver mis métricas, mi historial y mi potencial. El proceso fue muy transparente y profesional."</div>
+          <div style="margin-top:12px;font-size:10px;color:var(--muted)">Primer contrato de $2.400.000 CLP/año</div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-top" style="background:linear-gradient(135deg,#1e0a00,#3a1a00)">
+          <div class="story-overlay"></div>
+          <div>
+            <div class="story-name">Isabela Mora</div>
+            <div class="story-title">UTR 8.7 · Viña del Mar · 18 años</div>
+          </div>
+        </div>
+        <div class="story-body">
+          <div class="story-uni">🏛 Rollins College — NCAA D2 · Beca parcial 70%</div>
+          <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap"><span class="badge tag-purple">D2</span><span class="badge tag-lime">Beca 70%</span></div>
+          <div class="story-quote">"Soy de familia de clase media y nunca pensé que podría estudiar en EE.UU. Break Point me conectó con la coach Santos y hoy estudio Communications con beca en Florida."</div>
+          <div style="margin-top:12px;font-size:10px;color:var(--muted)">Ahorro total estimado: $90.000 USD en 4 años</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:32px;text-align:center">
+      <button class="btn btn-lime" onclick="openModal('modal-login')">Empieza tu historia hoy</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 12 — RUTAS ESTRATÉGICAS
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-rutas">
+<div style="padding-top:80px">
+  <div class="sec">
+    <div class="sec-eye">Planificación</div>
+    <h2 class="sec-h2">ELIGE TU<br>RUTA<br><span style="color:var(--lime)">ESTRATÉGICA</span></h2>
+    <p class="sec-sub">Cada jugador tiene un camino diferente. Selecciona tu objetivo y te mostramos el plan paso a paso para lograrlo.</p>
+    <div class="grid-3" style="gap:16px">
+      <div class="pathway-card" onclick="openModal('modal-ruta-ncaa')">
+        <div class="pathway-num">1</div>
+        <div class="pathway-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-grad"/></svg></div>
+        <div class="pathway-t">Beca NCAA en EE.UU.</div>
+        <div class="pathway-d">El camino más estructurado para combinar deporte de élite y educación universitaria en Estados Unidos con financiamiento parcial o total.</div>
+        <div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Perfil UTR mínimo 7.5 (mujeres) / 10.0 (hombres) para D1</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>GPA equivalente ≥ 3.0 / SAT 1200+ / TOEFL 79+</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Video highlights de 3–5 min y essay personal</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Contacto directo con coaches + visitas oficiales</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Proceso NCAA Eligibility Center (registro NLI)</span></div>
+        </div>
+        <button class="btn btn-lime btn-sm" style="margin-top:16px">Ver ruta completa</button>
+      </div>
+
+      <div class="pathway-card" onclick="openModal('modal-ruta-pro')">
+        <div class="pathway-num">2</div>
+        <div class="pathway-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-trophy"/></svg></div>
+        <div class="pathway-t">Circuito Profesional ATP/WTA</div>
+        <div class="pathway-d">Para jugadores con UTR 12+ que buscan el circuito profesional internacional. El camino más exigente pero también el más ambicioso.</div>
+        <div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Ranking ITF Junior top 200 como punto de partida</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Transición a torneos ITF Senior M15/W15</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Construcción de equipo: coach, preparador físico, psicólogo</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Sponsorship para cubrir costos de gira ($30K–80K USD/año)</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Acceso a torneos ATP/WTA Challenger y 250</span></div>
+        </div>
+        <button class="btn btn-lime btn-sm" style="margin-top:16px">Ver ruta completa</button>
+      </div>
+
+      <div class="pathway-card" onclick="openModal('modal-ruta-senior')">
+        <div class="pathway-num">3</div>
+        <div class="pathway-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-medal"/></svg></div>
+        <div class="pathway-t">Circuito Senior & Amateur</div>
+        <div class="pathway-d">Para jugadores mayores de 30 que quieren seguir compitiendo, viajar y disfrutar del tenis en torneos internacionales de alto nivel.</div>
+        <div>
+          <div class="pathway-step"><div class="step-dot"></div><span>ITF Super-Seniors (35+, 40+, 45+, 50+...)</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Torneos FedTenis y Copa Davis Senior</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Viajes internacionales organizados con grupo</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Liga amateur de alta intensidad con ranking</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Comunidad y red de contactos tenísticos</span></div>
+        </div>
+        <button class="btn btn-lime btn-sm" style="margin-top:16px">Ver ruta completa</button>
+      </div>
+
+      <div class="pathway-card" onclick="openModal('modal-ruta-chile')">
+        <div class="pathway-num">4</div>
+        <div class="pathway-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-grad"/></svg></div>
+        <div class="pathway-t">Beca Universidad Chilena</div>
+        <div class="pathway-d">Para jugadores que prefieren quedarse en Chile y acceder a becas deportivas en universidades nacionales de excelencia.</div>
+        <div>
+          <div class="pathway-step"><div class="step-dot"></div><span>UTR 6.0+ / NEM 5.5+ / ranking nacional top 100</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Postulación a la USACH, UCH, PUC, PUCV</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Entrevista con coordinador deportivo</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Beca de arancel 50–100% + estipendio mensual</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Competencia en campeonatos universitarios nacionales</span></div>
+        </div>
+        <button class="btn btn-lime btn-sm" style="margin-top:16px">Ver ruta completa</button>
+      </div>
+
+      <div class="pathway-card" onclick="openModal('modal-ruta-coach')">
+        <div class="pathway-num">5</div>
+        <div class="pathway-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-users"/></svg></div>
+        <div class="pathway-t">Entrenador Certificado</div>
+        <div class="pathway-d">Para jugadores retirados o semi-retirados que quieren reconvertirse como entrenadores certificados y construir su carrera como coaches.</div>
+        <div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Certificación FEDETCH nivel 1, 2 y 3</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Certificación PTR (Professional Tennis Registry)</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Experiencia como asistente en academias</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Construcción de cartera de alumnos propios</span></div>
+          <div class="pathway-step"><div class="step-dot"></div><span>Perfil en directorio Break Point Entrenadores</span></div>
+        </div>
+        <button class="btn btn-lime btn-sm" style="margin-top:16px">Ver ruta completa</button>
+      </div>
+
+      <div class="pathway-card" style="background:rgba(197,230,71,0.04);border-color:rgba(197,230,71,0.15)">
+        <div class="pathway-icon"><svg width="20" height="20" style="color:var(--lime)"><use href="#ic-target"/></svg></div>
+        <div class="pathway-t">¿No sabes qué ruta seguir?</div>
+        <div class="pathway-d" style="margin-bottom:20px">Nuestro equipo de asesores puede ayudarte a evaluar tu nivel actual, tus objetivos y las mejores oportunidades para tu perfil específico.</div>
+        <button class="btn btn-lime" onclick="openModal('modal-contacto')">Consulta gratuita</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 13 — DASHBOARD JUGADOR
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-dashboard">
+<div class="dashboard">
+  <nav class="sidebar-nav">
+    <div class="sn-section">
+      <div class="sn-label">Principal</div>
+      <div class="sn-item active" onclick="switchDash(this,'dash-overview')">
+        <svg width="16" height="16"><use href="#ic-home"/></svg> Resumen
+      </div>
+      <div class="sn-item" onclick="switchDash(this,'dash-perfil')">
+        <svg width="16" height="16"><use href="#ic-user"/></svg> Mi perfil
+      </div>
+      <div class="sn-item" onclick="switchDash(this,'dash-stats')">
+        <svg width="16" height="16"><use href="#ic-chart"/></svg> Estadísticas
+      </div>
+    </div>
+    <div class="sn-section">
+      <div class="sn-label">Oportunidades</div>
+      <div class="sn-item" onclick="switchDash(this,'dash-sponsors')">
+        <svg width="16" height="16"><use href="#ic-gift"/></svg> Sponsors
+        <span style="margin-left:auto;background:var(--lime);color:var(--black);font-size:9px;padding:1px 6px;border-radius:100px;font-weight:700">2</span>
+      </div>
+      <div class="sn-item" onclick="switchDash(this,'dash-coaches')">
+        <svg width="16" height="16"><use href="#ic-grad"/></svg> Coaches NCAA
+      </div>
+      <div class="sn-item" onclick="showPage('mensajes')">
+        <svg width="16" height="16"><use href="#ic-msg"/></svg> Mensajes
+        <span style="margin-left:auto;background:var(--lime);color:var(--black);font-size:9px;padding:1px 6px;border-radius:100px;font-weight:700">3</span>
+      </div>
+    </div>
+    <div class="sn-section">
+      <div class="sn-label">Mi carrera</div>
+      <div class="sn-item" onclick="showPage('torneos')">
+        <svg width="16" height="16"><use href="#ic-calendar"/></svg> Torneos
+      </div>
+      <div class="sn-item" onclick="switchDash(this,'dash-essay')">
+        <svg width="16" height="16"><use href="#ic-lock"/></svg> Essay privado
+      </div>
+      <div class="sn-item" onclick="showPage('rutas')">
+        <svg width="16" height="16"><use href="#ic-route"/></svg> Mi ruta
+      </div>
+    </div>
+    <div class="sn-section">
+      <div class="sn-label">Cuenta</div>
+      <div class="sn-item" onclick="switchDash(this,'dash-config')">
+        <svg width="16" height="16"><use href="#ic-settings"/></svg> Configuración
+      </div>
+    </div>
+  </nav>
+
+  <div class="dash-content">
+    <!-- Overview panel -->
+    <div id="dash-overview">
+      <div class="dash-top">
+        <div>
+          <div class="dash-h">Hola, Valentina 👋</div>
+          <div class="dash-sub">Domingo, 14 de junio de 2025</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-dark btn-sm" onclick="showPage('perfil')">Ver mi perfil público</button>
+          <button class="btn btn-lime btn-sm" onclick="openModal('modal-contacto')">+ Contactar coach</button>
+        </div>
+      </div>
+      <div class="metrics-row">
+        <div class="metric">
+          <div class="metric-l">UTR Rating</div>
+          <div class="metric-n">10.2</div>
+          <div class="metric-trend">▲ +0.3 este mes</div>
+        </div>
+        <div class="metric">
+          <div class="metric-l">Ranking Nacional</div>
+          <div class="metric-n">#18</div>
+          <div class="metric-trend">▲ +4 posiciones</div>
+        </div>
+        <div class="metric">
+          <div class="metric-l">Visitas al perfil</div>
+          <div class="metric-n">284</div>
+          <div class="metric-trend">▲ +18% vs mes anterior</div>
+        </div>
+        <div class="metric">
+          <div class="metric-l">Interesados</div>
+          <div class="metric-n">7</div>
+          <div class="metric-trend">2 sponsors · 5 coaches</div>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-card-t">Actividad reciente<span style="font-size:10px;color:var(--muted);font-family:'Inter',sans-serif">Esta semana</span></div>
+          <div class="activity-item"><div class="act-dot" style="background:var(--lime)"></div><div><div class="act-text"><strong>Coach Henderson (Miami)</strong> revisó tu perfil</div><div class="act-time">Hoy, 09:14</div></div></div>
+          <div class="activity-item"><div class="act-dot" style="background:#60a5fa"></div><div><div class="act-text"><strong>Enex</strong> envió propuesta de sponsorship</div><div class="act-time">Ayer, 16:30</div></div></div>
+          <div class="activity-item"><div class="act-dot" style="background:#22c55e"></div><div><div class="act-text">Ganaste partido vs García — UTR +0.2</div><div class="act-time">Vie, 11:00</div></div></div>
+          <div class="activity-item"><div class="act-dot" style="background:#a78bfa"></div><div><div class="act-text"><strong>Coach Santos (Rollins)</strong> descargó tu essay</div><div class="act-time">Jue, 14:20</div></div></div>
+          <div class="activity-item"><div class="act-dot" style="background:#fbbf24"></div><div><div class="act-text">Nuevo torneo ITF J30 disponible para inscripción</div><div class="act-time">Mié, 08:00</div></div></div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-t">Rendimiento — Partidos<span style="font-size:10px;color:var(--muted);font-family:'Inter',sans-serif">Últimos 7 meses</span></div>
+          <div class="bar-chart">
+            <div class="bar" style="height:45%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:62%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:78%"></div>
+            <div class="bar" style="height:82%"></div>
+            <div class="bar active-bar" style="height:90%"></div>
+          </div>
+          <div class="bar-labels"><div class="bar-l">Dic</div><div class="bar-l">Ene</div><div class="bar-l">Feb</div><div class="bar-l">Mar</div><div class="bar-l">Abr</div><div class="bar-l">May</div><div class="bar-l">Jun</div></div>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-card-t">Mensajes de sponsors</div>
+          <div class="sponsor-msg">
+            <div class="unread-dot"></div>
+            <div class="sponsor-logo-sm">EN</div>
+            <div style="flex:1;min-width:0">
+              <div class="msg-brand">Enex</div>
+              <div class="msg-preview">Hola Valentina, queremos proponerte un contrato...</div>
+            </div>
+            <div class="msg-time">Ayer</div>
+          </div>
+          <div class="sponsor-msg">
+            <div class="unread-dot"></div>
+            <div class="sponsor-logo-sm">WL</div>
+            <div style="flex:1;min-width:0">
+              <div class="msg-brand">Wilson Chile</div>
+              <div class="msg-preview">Tenemos raquetas para que pruebes esta temporada...</div>
+            </div>
+            <div class="msg-time">Lunes</div>
+          </div>
+          <div class="sponsor-msg">
+            <div class="sponsor-logo-sm">BB</div>
+            <div style="flex:1;min-width:0">
+              <div class="msg-brand">Babolat</div>
+              <div class="msg-preview">Gracias por tu interés, enviamos propuesta...</div>
+            </div>
+            <div class="msg-time">Hace 1 sem</div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-t">Completar perfil</div>
+          <div style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray3);margin-bottom:6px"><span>Perfil completado</span><span style="color:var(--lime)">78%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;gap:6px;align-items:center;font-size:11px;color:#22c55e"><svg width="12" height="12" style="color:#22c55e"><use href="#ic-check"/></svg> Foto de perfil</div>
+            <div style="display:flex;gap:6px;align-items:center;font-size:11px;color:#22c55e"><svg width="12" height="12" style="color:#22c55e"><use href="#ic-check"/></svg> UTR conectado</div>
+            <div style="display:flex;gap:6px;align-items:center;font-size:11px;color:#22c55e"><svg width="12" height="12" style="color:#22c55e"><use href="#ic-check"/></svg> Essay privado</div>
+            <div style="display:flex;gap:6px;align-items:center;font-size:11px;color:var(--muted)"><svg width="12" height="12" style="color:var(--gray2)"><use href="#ic-plus"/></svg> Video pitch (recomendado)</div>
+            <div style="display:flex;gap:6px;align-items:center;font-size:11px;color:var(--muted)"><svg width="12" height="12" style="color:var(--gray2)"><use href="#ic-plus"/></svg> Conectar Instagram</div>
+            <div style="display:flex;gap:6px;align-items:center;font-size:11px;color:var(--muted)"><svg width="12" height="12" style="color:var(--gray2)"><use href="#ic-plus"/></svg> 5 resultados de torneos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Essay panel -->
+    <div id="dash-essay" style="display:none">
+      <div class="dash-top">
+        <div>
+          <div class="dash-h">Essay Privado</div>
+          <div class="dash-sub">Solo coaches y sponsors verificados pueden leerlo</div>
+        </div>
+        <button class="btn btn-lime btn-sm" onclick="openModal('modal-essay')">Editar essay</button>
+      </div>
+      <div class="essay-lock" style="text-align:left">
+        <div class="essay-badge"><svg width="12" height="12" style="color:var(--lime)"><use href="#ic-lock"/></svg> Contenido privado · 12 lecturas esta semana</div>
+        <div style="font-size:13px;color:var(--gray3);line-height:1.8;margin:16px 0">Mi nombre es Valentina Rojas y tengo 17 años. Comencé a jugar tenis a los 7 años en el club de mi barrio en Ñuñoa, sin ninguna expectativa más que el disfrute del deporte. Nunca imaginé que esa primera lección con una raqueta prestada cambiaría el rumbo de mi vida...</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-dark btn-sm" onclick="openModal('modal-essay')">Editar</button>
+          <button class="btn btn-ghost btn-sm">Vista previa pública</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sponsors panel -->
+    <div id="dash-sponsors" style="display:none">
+      <div class="dash-top">
+        <div><div class="dash-h">Propuestas de Sponsors</div><div class="dash-sub">2 nuevas propuestas sin leer</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:var(--b3);border:1px solid rgba(197,230,71,0.2);border-radius:var(--rl);padding:20px;display:flex;gap:16px;align-items:flex-start">
+          <div class="sponsor-logo-sm" style="width:48px;height:48px;font-size:14px">EN</div>
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <div>
+                <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:2px">Enex — Propuesta de sponsorship</div>
+                <div style="font-size:11px;color:var(--muted)">Enviado ayer · Sin leer</div>
+              </div>
+              <span class="badge tag-lime">NUEVA</span>
+            </div>
+            <div style="font-size:12px;color:var(--gray3);line-height:1.6;margin:10px 0">Hola Valentina, hemos seguido tu trayectoria y queremos proponerte un contrato de sponsorship por $800.000 CLP/año + equipamiento Enex. A cambio, 2 menciones en Instagram por torneo y presencia en tu ropa de competición.</div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-lime btn-sm" onclick="showPage('mensajes')">Responder</button>
+              <button class="btn btn-ghost btn-sm">Ver empresa</button>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px;display:flex;gap:16px;align-items:flex-start">
+          <div class="sponsor-logo-sm" style="width:48px;height:48px;font-size:14px">WL</div>
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <div>
+                <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:2px">Wilson Chile — Colaboración de raquetas</div>
+                <div style="font-size:11px;color:var(--muted)">Enviado el lunes · Sin leer</div>
+              </div>
+              <span class="badge tag-lime">NUEVA</span>
+            </div>
+            <div style="font-size:12px;color:var(--gray3);line-height:1.6;margin:10px 0">Nos gustaría enviarte una Pro Staff 97 para que la pruebes sin compromiso y, si te gusta, hablar de un acuerdo como embajadora de marca para la región.</div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-lime btn-sm" onclick="showPage('mensajes')">Responder</button>
+              <button class="btn btn-ghost btn-sm">Ver empresa</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coaches panel -->
+    <div id="dash-coaches" style="display:none">
+      <div class="dash-top">
+        <div><div class="dash-h">Coaches NCAA Interesados</div><div class="dash-sub">5 coaches han revisado tu perfil este mes</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:16px;display:flex;gap:14px;align-items:center">
+          <div class="coach-uni-logo" style="width:44px;height:44px;border-color:#0021A5;background:#0a0f2a;color:#60a5fa;font-size:10px;margin-bottom:0">MIA</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:500;color:#fff">Coach Ryan Henderson · University of Miami</div>
+            <div style="font-size:11px;color:var(--lime)">NCAA D1 · Revisó tu perfil y essay</div>
+          </div>
+          <button class="btn btn-lime btn-sm" onclick="showPage('mensajes')">Contactar</button>
+        </div>
+        <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:16px;display:flex;gap:14px;align-items:center">
+          <div class="coach-uni-logo" style="width:44px;height:44px;border-color:#C4122F;background:#1e0808;color:#f87171;font-size:9px;margin-bottom:0">RLC</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:500;color:#fff">Coach María Santos · Rollins College</div>
+            <div style="font-size:11px;color:var(--lime)">NCAA D2 · Descargó tu essay privado</div>
+          </div>
+          <button class="btn btn-lime btn-sm" onclick="showPage('mensajes')">Contactar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Config panel -->
+    <div id="dash-config" style="display:none">
+      <div class="dash-top"><div><div class="dash-h">Configuración</div><div class="dash-sub">Gestiona tu cuenta y privacidad</div></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="dash-card">
+          <div class="dash-card-t">Privacidad</div>
+          <div class="info-row"><span class="lbl">Essay visible para coaches</span><span style="color:#22c55e;font-size:12px">✓ Activo</span></div>
+          <div class="info-row"><span class="lbl">Essay visible para sponsors</span><span style="color:#22c55e;font-size:12px">✓ Activo</span></div>
+          <div class="info-row"><span class="lbl">Perfil público</span><span style="color:#22c55e;font-size:12px">✓ Visible</span></div>
+          <div class="info-row"><span class="lbl">Disponible para contacto</span><span style="color:#22c55e;font-size:12px">✓ Sí</span></div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-t">Suscripción</div>
+          <div class="info-row"><span class="lbl">Plan actual</span><span class="val" style="color:var(--lime)">Pro</span></div>
+          <div class="info-row"><span class="lbl">Próximo cobro</span><span class="val">14 Jul 2025</span></div>
+          <div class="info-row"><span class="lbl">Monto</span><span class="val">$9.990 CLP/mes</span></div>
+          <div style="margin-top:12px"><button class="btn btn-lime btn-sm">Actualizar a Elite</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats panel -->
+    <div id="dash-stats" style="display:none">
+      <div class="dash-top"><div><div class="dash-h">Estadísticas</div><div class="dash-sub">Tu rendimiento en datos</div></div></div>
+      <div class="metrics-row">
+        <div class="metric"><div class="metric-l">Victorias 2025</div><div class="metric-n">18</div><div class="metric-trend">vs 4 derrotas</div></div>
+        <div class="metric"><div class="metric-l">Win Rate</div><div class="metric-n">87%</div><div class="metric-trend">▲ +5% vs 2024</div></div>
+        <div class="metric"><div class="metric-l">Sets ganados</div><div class="metric-n">41</div><div class="metric-trend">de 52 sets jugados</div></div>
+        <div class="metric"><div class="metric-l">UTR peak</div><div class="metric-n">10.4</div><div class="metric-trend">Febrero 2025</div></div>
+      </div>
+    </div>
+
+    <!-- Perfil panel -->
+    <div id="dash-perfil" style="display:none">
+      <div class="dash-top"><div><div class="dash-h">Editar perfil</div><div class="dash-sub">Mantén tu perfil actualizado</div></div><button class="btn btn-lime btn-sm">Guardar cambios</button></div>
+      <div class="grid-2" style="gap:16px">
+        <div class="dash-card">
+          <div class="dash-card-t">Información personal</div>
+          <div class="field"><label>Nombre completo</label><input type="text" value="Valentina Rojas Espinoza"></div>
+          <div class="field-row">
+            <div class="field"><label>Ciudad</label><input type="text" value="Santiago"></div>
+            <div class="field"><label>Edad</label><input type="number" value="17"></div>
+          </div>
+          <div class="field"><label>Club actual</label><input type="text" value="Club de Tenis Miraflores"></div>
+          <div class="field"><label>Entrenador</label><input type="text" value="Prof. Carlos Soto"></div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-t">Redes sociales & UTR</div>
+          <div class="field"><label>Instagram</label><input type="text" value="@valentina.tennis"></div>
+          <div class="field"><label>TikTok</label><input type="text" placeholder="@usuario"></div>
+          <div class="field"><label>YouTube</label><input type="text" placeholder="Canal YouTube"></div>
+          <div class="field"><label>UTR Sport ID</label><input type="text" value="UTR-CL-8821"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 14 — MENSAJES
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-mensajes">
+<div class="msg-layout">
+  <div class="msg-sidebar">
+    <div class="msg-sidebar-header">
+      <div class="msg-sidebar-title">Mensajes</div>
+      <button class="btn btn-lime btn-sm" onclick="openModal('modal-nuevo-msg')">
+        <svg width="12" height="12"><use href="#ic-plus"/></svg>
+      </button>
+    </div>
+    <div class="msg-thread active-thread" onclick="activateThread(this)">
+      <div class="msg-thread-av" style="border-color:#0021A5;background:#0a0f2a;color:#60a5fa">RH</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;justify-content:space-between"><div class="msg-thread-name">Coach Ryan Henderson</div><div style="font-size:10px;color:var(--muted)">09:14</div></div>
+        <div class="msg-thread-prev">Hola Valentina! He revisado tu perfil y me parece...</div>
+      </div>
+      <div class="msg-unread"></div>
+    </div>
+    <div class="msg-thread" onclick="activateThread(this)">
+      <div class="msg-thread-av" style="border-color:#C5E647;background:#1e2a12;color:#C5E647">EN</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;justify-content:space-between"><div class="msg-thread-name">Enex — Sponsorship</div><div style="font-size:10px;color:var(--muted)">Ayer</div></div>
+        <div class="msg-thread-prev">Queremos proponerte un contrato anual...</div>
+      </div>
+      <div class="msg-unread"></div>
+    </div>
+    <div class="msg-thread" onclick="activateThread(this)">
+      <div class="msg-thread-av" style="border-color:#C4122F;background:#1e0808;color:#f87171">MS</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;justify-content:space-between"><div class="msg-thread-name">Coach María Santos</div><div style="font-size:10px;color:var(--muted)">Lunes</div></div>
+        <div class="msg-thread-prev">Tu essay estuvo excelente. Tengo una plaza...</div>
+      </div>
+    </div>
+    <div class="msg-thread" onclick="activateThread(this)">
+      <div class="msg-thread-av" style="border-color:#a78bfa;background:#1a0a2a;color:#a78bfa">CS</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;justify-content:space-between"><div class="msg-thread-name">Carlos Soto (Entrenador)</div><div style="font-size:10px;color:var(--muted)">Vie</div></div>
+        <div class="msg-thread-prev">Mañana entrenamos a las 7am. Lleva raqueta...</div>
+      </div>
+    </div>
+  </div>
+  <div class="msg-main">
+    <div class="msg-main-header">
+      <div class="msg-thread-av" style="width:36px;height:36px;border-color:#0021A5;background:#0a0f2a;color:#60a5fa;font-size:13px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif">RH</div>
+      <div>
+        <div style="font-size:14px;font-weight:500;color:#fff">Coach Ryan Henderson</div>
+        <div style="font-size:11px;color:var(--muted)">University of Miami · NCAA D1 · En línea</div>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:8px">
+        <button class="btn btn-dark btn-sm" onclick="showPage('universidades')">Ver perfil</button>
+      </div>
+    </div>
+    <div class="msg-body">
+      <div class="msg-bubble-wrap">
+        <div class="msg-thread-av" style="width:28px;height:28px;border-color:#0021A5;background:#0a0f2a;color:#60a5fa;font-size:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;flex-shrink:0">RH</div>
+        <div><div class="bubble them">Hola Valentina! He revisado tu perfil en Break Point y he quedado muy impresionado con tus métricas. UTR 10.2 con un win rate de 87% es exactamente lo que buscamos en Miami.</div><div class="bubble-time">09:00</div></div>
+      </div>
+      <div class="msg-bubble-wrap">
+        <div class="msg-thread-av" style="width:28px;height:28px;border-color:#0021A5;background:#0a0f2a;color:#60a5fa;font-size:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;flex-shrink:0">RH</div>
+        <div><div class="bubble them">¿Tendrías disponibilidad para una videollamada esta semana? Me gustaría conocerte mejor y hablar sobre tu objetivo académico y tenístico.</div><div class="bubble-time">09:02</div></div>
+      </div>
+      <div class="msg-bubble-wrap mine">
+        <div class="msg-thread-av" style="width:28px;height:28px;border-color:var(--lime);background:#1e2a12;color:var(--lime);font-size:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;flex-shrink:0">VR</div>
+        <div><div class="bubble mine">¡Hola Coach Henderson! Muchas gracias por contactarme. Sería un honor hablar con usted. Tengo disponibilidad el miércoles o jueves por la tarde (hora Chile).</div><div class="bubble-time mine">09:14</div></div>
+      </div>
+    </div>
+    <div class="msg-input-bar">
+      <input class="msg-input" type="text" placeholder="Escribe un mensaje...">
+      <button class="btn btn-lime btn-sm">Enviar</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 15 — ADMIN PANEL
+═══════════════════════════════════════════════════ -->
+<div class="page" id="page-admin">
+<div style="padding-top:80px">
+  <div class="sec">
+    <div class="sec-eye">Administración</div>
+    <h2 class="sec-h2">PANEL DE<br>MODERACIÓN</h2>
+    <p class="sec-sub">Gestión de solicitudes, nuevos perfiles, coaches y sponsors pendientes de verificación.</p>
+
+    <div class="tabs" style="margin-bottom:24px">
+      <div class="tab active" onclick="switchTab(this,'admin-solicitudes')">Solicitudes pendientes</div>
+      <div class="tab" onclick="switchTab(this,'admin-coaches')">Coaches por verificar</div>
+      <div class="tab" onclick="switchTab(this,'admin-sponsors')">Sponsors por verificar</div>
+      <div class="tab" onclick="switchTab(this,'admin-reportes')">Reportes</div>
+    </div>
+
+    <div id="admin-solicitudes" class="tab-content">
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);overflow:hidden">
+        <div style="padding:14px 20px;border-bottom:1px solid var(--b4);display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:12px;color:var(--gray3)">12 solicitudes pendientes</div>
+          <div style="display:flex;gap:6px">
+            <button class="btn btn-ghost btn-sm">Exportar</button>
+            <button class="btn btn-lime btn-sm">Aprobar selección</button>
+          </div>
+        </div>
+        <div style="padding:0 20px">
+          <div class="admin-row">
+            <div class="admin-status status-pending"></div>
+            <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#fff">Rodrigo Alvarado — Nuevo jugador</div><div style="font-size:10px;color:var(--muted)">Solicitud: hace 2 horas · UTR: 7.3 · Santiago</div></div>
+            <div style="display:flex;gap:6px">
+              <button class="btn btn-lime btn-sm" onclick="showToast('Perfil aprobado')">Aprobar</button>
+              <button class="btn btn-ghost btn-sm">Ver</button>
+              <button class="btn btn-dark btn-sm">Rechazar</button>
+            </div>
+          </div>
+          <div class="admin-row">
+            <div class="admin-status status-pending"></div>
+            <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#fff">Coach James Miller — Universidad de Florida</div><div style="font-size:10px;color:var(--muted)">Solicitud: hace 5 horas · NCAA D1 · Adjuntó credenciales</div></div>
+            <div style="display:flex;gap:6px">
+              <button class="btn btn-lime btn-sm" onclick="showToast('Coach verificado')">Aprobar</button>
+              <button class="btn btn-ghost btn-sm">Ver</button>
+              <button class="btn btn-dark btn-sm">Rechazar</button>
+            </div>
+          </div>
+          <div class="admin-row">
+            <div class="admin-status status-approved"></div>
+            <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#fff">Enex Chile — Sponsor Bronze</div><div style="font-size:10px;color:var(--muted)">Aprobado ayer · Rut verificado · Pago confirmado</div></div>
+            <div style="display:flex;gap:6px">
+              <span class="badge tag-lime">Aprobado</span>
+            </div>
+          </div>
+          <div class="admin-row">
+            <div class="admin-status status-pending"></div>
+            <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#fff">Club de Tenis Araucanía — Registro de club</div><div style="font-size:10px;color:var(--muted)">Solicitud: hace 1 día · Temuco · 6 canchas</div></div>
+            <div style="display:flex;gap:6px">
+              <button class="btn btn-lime btn-sm" onclick="showToast('Club aprobado')">Aprobar</button>
+              <button class="btn btn-ghost btn-sm">Ver</button>
+              <button class="btn btn-dark btn-sm">Rechazar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="admin-coaches" class="tab-content" style="display:none">
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px">
+        <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:16px">3 coaches pendientes de verificación</div>
+        <div class="admin-row">
+          <div class="admin-status status-pending"></div>
+          <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#fff">Coach James Miller · U. Florida · D1</div><div style="font-size:10px;color:var(--muted)">Adjuntó contrato y credenciales NCAA</div></div>
+          <button class="btn btn-lime btn-sm" onclick="showToast('Coach verificado ✓')">Verificar</button>
+        </div>
+        <div class="admin-row">
+          <div class="admin-status status-pending"></div>
+          <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#fff">Coach Sarah Lee · Auburn · D1</div><div style="font-size:10px;color:var(--muted)">Email institucional verificado, falta certificado</div></div>
+          <button class="btn btn-lime btn-sm" onclick="showToast('Coach verificado ✓')">Verificar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="admin-sponsors" class="tab-content" style="display:none">
+      <div style="background:var(--b3);border:1px solid var(--b4);border-radius:var(--rl);padding:20px">
+        <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:16px">2 sponsors pendientes</div>
+        <div class="admin-row">
+          <div class="admin-status status-pending"></div>
+          <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#fff">Laboratorio Dermal — Plan Silver</div><div style="font-size:10px;color:var(--muted)">RUT verificado · Pago pendiente</div></div>
+          <button class="btn btn-lime btn-sm" onclick="showToast('Sponsor verificado ✓')">Activar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="admin-reportes" class="tab-content" style="display:none">
+      <div class="metrics-row" style="margin-bottom:0">
+        <div class="metric"><div class="metric-l">Jugadores activos</div><div class="metric-n">412</div><div class="metric-trend">▲ +28 este mes</div></div>
+        <div class="metric"><div class="metric-l">Coaches verificados</div><div class="metric-n">127</div><div class="metric-trend">▲ +5 este mes</div></div>
+        <div class="metric"><div class="metric-l">Sponsors activos</div><div class="metric-n">45</div><div class="metric-trend">▲ +3 este mes</div></div>
+        <div class="metric"><div class="metric-l">Ingresos mes</div><div class="metric-n">$2.1M</div><div class="metric-trend" style="color:var(--muted)">CLP</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════════════ -->
+
+<!-- Modal: Login/Register -->
+<div class="modal-overlay" id="modal-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-login')">×</button>
+    <div style="text-align:center;margin-bottom:20px">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" fill="#C5E647"/><path d="M5 11C8.5 13 10 14 10 16s-1.5 3-5 5" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round"/><path d="M27 11C23.5 13 22 14 22 16s1.5 3 5 5" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
+    <div class="modal-tabs">
+      <div class="modal-tab active" onclick="switchModalTab(this,'tab-login-f')">Ingresar</div>
+      <div class="modal-tab" onclick="switchModalTab(this,'tab-reg-f')">Registrarse</div>
+    </div>
+    <div id="tab-login-f">
+      <div class="field"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+      <div class="field"><label>Contraseña</label><input type="password" placeholder="••••••••"></div>
+      <button class="btn btn-lime" style="width:100%;justify-content:center;margin-bottom:12px" onclick="closeModal('modal-login');showPage('dashboard');showToast('Bienvenida, Valentina!')">Ingresar</button>
+      <div style="text-align:center;font-size:11px;color:var(--muted)">¿Olvidaste tu contraseña? <a style="color:var(--lime);cursor:pointer">Recuperar</a></div>
+    </div>
+    <div id="tab-reg-f" style="display:none">
+      <div class="field-row">
+        <div class="field"><label>Nombre</label><input type="text" placeholder="Valentina"></div>
+        <div class="field"><label>Apellido</label><input type="text" placeholder="Rojas"></div>
+      </div>
+      <div class="field"><label>Email</label><input type="email" placeholder="tu@email.com"></div>
+      <div class="field">
+        <label>Tipo de cuenta</label>
+        <select>
+          <option>Jugador/a</option>
+          <option>Coach / Entrenador</option>
+          <option>Empresa / Sponsor</option>
+          <option>Coach universitario NCAA</option>
+          <option>Psicólogo deportivo</option>
+        </select>
+      </div>
+      <div class="field"><label>Contraseña</label><input type="password" placeholder="Mínimo 8 caracteres"></div>
+      <button class="btn btn-lime" style="width:100%;justify-content:center" onclick="closeModal('modal-login');showPage('dashboard');showToast('¡Bienvenido a Break Point!')">Crear cuenta gratis</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Contacto -->
+<div class="modal-overlay" id="modal-contacto">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-contacto')">×</button>
+    <div class="modal-h">Enviar mensaje</div>
+    <div class="modal-sub">Tu mensaje llegará directamente a la persona o empresa.</div>
+    <div class="field"><label>Para</label><input type="text" value="Coach Ryan Henderson — University of Miami"></div>
+    <div class="field"><label>Asunto</label><input type="text" placeholder="Interés en plaza disponible 2026..."></div>
+    <div class="field"><label>Mensaje</label><textarea placeholder="Escribe tu mensaje aquí..."></textarea></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime" style="flex:1;justify-content:center" onclick="closeModal('modal-contacto');showToast('Mensaje enviado ✓')">Enviar</button>
+      <button class="btn btn-ghost" onclick="closeModal('modal-contacto')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Video -->
+<div class="modal-overlay" id="modal-video">
+  <div class="modal" style="width:640px;padding:20px">
+    <button class="modal-close" onclick="closeModal('modal-video')">×</button>
+    <div style="background:var(--b4);height:320px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative">
+      <div class="play-btn" style="width:72px;height:72px"><svg width="24" height="24" style="color:var(--lime)"><use href="#ic-play"/></svg></div>
+      <div style="position:absolute;bottom:12px;left:12px;font-size:11px;color:#fff;background:rgba(0,0,0,0.8);padding:4px 10px;border-radius:4px">Partido Final — ITF Chile Open 2025</div>
+    </div>
+    <div style="font-size:13px;font-weight:500;color:#fff">Valentina Rojas vs García, M.</div>
+    <div style="font-size:11px;color:var(--muted)">ITF Chile Open · Final · Mar 2025 · V 6-3 6-2</div>
+  </div>
+</div>
+
+<!-- Modal: Coach detail -->
+<div class="modal-overlay" id="modal-coach">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-coach')">×</button>
+    <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px">
+      <div class="coach-uni-logo" style="border-color:#0021A5;background:#0a0f2a;color:#60a5fa;font-size:11px;width:56px;height:56px">MIAMI</div>
+      <div>
+        <div style="font-size:10px;color:var(--lime);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px">University of Miami — NCAA Division I</div>
+        <div style="font-size:20px;font-weight:500;color:#fff">Coach Ryan Henderson</div>
+        <div style="font-size:12px;color:var(--muted)">Head Women's Tennis Coach · Coral Gables, FL</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+      <div style="background:var(--b4);border-radius:var(--r);padding:12px"><div style="font-size:9px;color:var(--muted);margin-bottom:2px">UTR mínimo</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">9.5</div></div>
+      <div style="background:var(--b4);border-radius:var(--r);padding:12px"><div style="font-size:9px;color:var(--muted);margin-bottom:2px">GPA mínimo</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">3.0</div></div>
+      <div style="background:var(--b4);border-radius:var(--r);padding:12px"><div style="font-size:9px;color:var(--muted);margin-bottom:2px">Becas disponibles 2026</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">2</div></div>
+      <div style="background:var(--b4);border-radius:var(--r);padding:12px"><div style="font-size:9px;color:var(--muted);margin-bottom:2px">Valor beca anual</div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--lime)">$65K</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--gray3);line-height:1.6;margin-bottom:20px">El programa de tenis femenino de Miami busca jugadoras con experiencia ITF, sólidas académicamente y con potencial de impacto en la ACC. Proceso de aplicación incluye visita oficial, prueba técnica y entrevista académica.</p>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime" style="flex:1;justify-content:center" onclick="closeModal('modal-coach');openModal('modal-contacto')">Contactar Coach</button>
+      <button class="btn btn-ghost" onclick="closeModal('modal-coach')">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Torneo -->
+<div class="modal-overlay" id="modal-torneo">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-torneo')">×</button>
+    <div class="modal-h">Copa Break Point — Torneo Inaugural</div>
+    <div class="modal-sub">28 de junio 2025 · Club Miraflores, Santiago</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+      <div class="info-row" style="border:none;padding:6px 0"><span class="lbl">Superficie</span><span class="val">Polvo de ladrillo</span></div>
+      <div class="info-row" style="border:none;padding:6px 0"><span class="lbl">Premio</span><span class="val" style="color:var(--lime)">$500.000 CLP</span></div>
+      <div class="info-row" style="border:none;padding:6px 0"><span class="lbl">Categorías</span><span class="val">Open, Sub-18</span></div>
+      <div class="info-row" style="border:none;padding:6px 0"><span class="lbl">Inscripción</span><span class="val">$15.000 CLP</span></div>
+      <div class="info-row" style="border:none;padding:6px 0"><span class="lbl">Cupos</span><span class="val">32 por cuadro</span></div>
+      <div class="info-row" style="border:none;padding:6px 0"><span class="lbl">Cierre inscripción</span><span class="val">24 Jun</span></div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime" style="flex:1;justify-content:center" onclick="closeModal('modal-torneo');openModal('modal-login')">Inscribirse</button>
+      <button class="btn btn-ghost" onclick="closeModal('modal-torneo')">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Sponsor -->
+<div class="modal-overlay" id="modal-sponsor">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-sponsor')">×</button>
+    <div class="modal-h">Quiero patrocinar</div>
+    <div class="modal-sub">Cuéntanos sobre tu empresa y objetivos de marketing.</div>
+    <div class="field"><label>Empresa</label><input type="text" placeholder="Nombre de tu empresa"></div>
+    <div class="field"><label>Rubro</label><select><option>Deporte & Fitness</option><option>Bebidas & Nutrición</option><option>Tecnología</option><option>Retail</option><option>Servicios financieros</option><option>Otro</option></select></div>
+    <div class="field"><label>Paquete de interés</label><select><option>Bronze — $300.000/mes</option><option>Silver — $900.000/mes</option><option>Gold — A convenir</option></select></div>
+    <div class="field"><label>¿Qué tipo de jugador buscas patrocinar?</label><textarea placeholder="Ej: jugadora sub-20 con presencia en Instagram..."></textarea></div>
+    <div class="field"><label>Email de contacto</label><input type="email" placeholder="contacto@empresa.cl"></div>
+    <button class="btn btn-lime" style="width:100%;justify-content:center" onclick="closeModal('modal-sponsor');showToast('¡Solicitud enviada! Te contactaremos en 24h')">Enviar solicitud</button>
+  </div>
+</div>
+
+<!-- Modal: ROI Calculator -->
+<div class="modal-overlay" id="modal-roi">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-roi')">×</button>
+    <div class="modal-h">Calcular ROI</div>
+    <div class="modal-sub">Estima el retorno de tu inversión en sponsorship.</div>
+    <div class="field"><label>Presupuesto mensual (CLP)</label><input type="number" placeholder="500000" oninput="calcROI(this.value)"></div>
+    <div id="roi-result" style="background:rgba(197,230,71,0.06);border:1px solid rgba(197,230,71,0.2);border-radius:var(--r);padding:16px;display:none">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div><div style="font-size:10px;color:var(--muted);margin-bottom:4px">Alcance estimado/mes</div><div id="roi-reach" style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--lime)">0</div></div>
+        <div><div style="font-size:10px;color:var(--muted);margin-bottom:4px">CPM estimado</div><div id="roi-cpm" style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--lime)">$0</div></div>
+        <div><div style="font-size:10px;color:var(--muted);margin-bottom:4px">Ahorro tributario est.</div><div id="roi-tax" style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#22c55e">$0</div></div>
+        <div><div style="font-size:10px;color:var(--muted);margin-bottom:4px">Jugadores patrocinados</div><div id="roi-players" style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--lime)">0</div></div>
+      </div>
+    </div>
+    <button class="btn btn-lime" style="width:100%;justify-content:center;margin-top:16px" onclick="closeModal('modal-roi');openModal('modal-sponsor')">Comenzar ahora</button>
+  </div>
+</div>
+
+<!-- Modal: Vender equipo -->
+<div class="modal-overlay" id="modal-vender">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-vender')">×</button>
+    <div class="modal-h">Publicar equipo</div>
+    <div class="modal-sub">Vende, compra o intercambia equipos con la comunidad.</div>
+    <div class="field"><label>Tipo</label><select><option>Raqueta</option><option>Cuerdas</option><option>Calzado</option><option>Ropa</option><option>Accesorios</option><option>Otro</option></select></div>
+    <div class="field"><label>Descripción</label><input type="text" placeholder="Wilson Pro Staff 97 v14 — 3 meses de uso"></div>
+    <div class="field-row">
+      <div class="field"><label>Precio (CLP)</label><input type="number" placeholder="85000"></div>
+      <div class="field"><label>Tipo de oferta</label><select><option>Venta</option><option>Intercambio</option><option>Venta o intercambio</option></select></div>
+    </div>
+    <div class="field"><label>Estado del equipo</label><select><option>Nuevo</option><option>Como nuevo</option><option>Muy bueno</option><option>Bueno</option><option>Aceptable</option></select></div>
+    <button class="btn btn-lime" style="width:100%;justify-content:center" onclick="closeModal('modal-vender');showToast('Publicación creada ✓')">Publicar</button>
+  </div>
+</div>
+
+<!-- Modal: Essay editor -->
+<div class="modal-overlay" id="modal-essay">
+  <div class="modal" style="width:560px">
+    <button class="modal-close" onclick="closeModal('modal-essay')">×</button>
+    <div class="modal-h">Editar Essay Privado</div>
+    <div class="modal-sub">Solo coaches verificados y sponsors podrán leerlo. Escribe con autenticidad.</div>
+    <div class="field"><label>Tu historia personal</label><textarea style="min-height:180px">Mi nombre es Valentina Rojas y tengo 17 años. Comencé a jugar tenis a los 7 años en el club de mi barrio en Ñuñoa...</textarea></div>
+    <div class="field-row">
+      <div class="field"><label>GPA equivalente</label><input type="text" value="3.9 / 4.0"></div>
+      <div class="field"><label>SAT Score</label><input type="number" value="1380"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>TOEFL</label><input type="number" value="98"></div>
+      <div class="field"><label>Disponibilidad</label><input type="text" value="Agosto 2026"></div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-lime" style="flex:1;justify-content:center" onclick="closeModal('modal-essay');showToast('Essay guardado ✓')">Guardar</button>
+      <button class="btn btn-ghost" onclick="closeModal('modal-essay')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <svg width="16" height="16" style="color:var(--lime)"><use href="#ic-check"/></svg>
+  <span id="toast-msg">Acción completada</span>
+</div>
+
+<script>
+// ═══ TORNEOS (datos dinámicos desde Airtable, vía tournaments.json) ═══
+const MESES_ES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const BADGE_COLOR = {
+  'Club/Local':'tag-lime','ITF World Tennis Tour':'tag-blue','ITF Junior':'tag-blue',
+  'UTR':'tag-teal','USTA':'tag-teal','RFET':'tag-orange','Federación Chile':'tag-orange','Otro':'tag-gray'
+};
+function fmtFecha(iso) {
+  if (!iso) return null;
+  const [y,m,d] = iso.split('-').map(Number);
+  return { d: String(d).padStart(2,'0'), m: MESES_ES[m-1] + ' ' + y };
+}
+function tournCardHTML(t) {
+  const fi = fmtFecha(t.fechaInicio) || { d:'--', m:'' };
+  const cat = (t.categoria && t.categoria[0]) || 'Otro';
+  const badgeClass = BADGE_COLOR[cat] || 'tag-gray';
+  const abierto = t.estado === 'Inscripción Abierta';
+  const precio = t.valor ? `<div class="tourn-prize">${t.valor}</div><div class="tourn-prize-l">Valor inscripción</div>`
+                          : `<div class="tourn-prize">${t.estado || 'Por confirmar'}</div><div class="tourn-prize-l">Estado</div>`;
+  const accion = (abierto && t.linkInscripcion)
+    ? `<a class="btn btn-lime btn-sm" target="_blank" rel="noopener" href="${t.linkInscripcion}" onclick="event.stopPropagation()">Inscribirse</a>`
+    : `<a class="btn btn-out btn-sm" target="_blank" rel="noopener" href="${t.fuente || '#'}" onclick="event.stopPropagation()">Ver detalles</a>`;
+  return `<div class="tourn-card">
+    <div class="tourn-date"><div class="tourn-date-d">${fi.d}</div><div class="tourn-date-m">${fi.m}</div></div>
+    <div class="tourn-body">
+      <div class="tourn-name">${t.nombre}</div>
+      <div class="tourn-meta">
+        <span>📍 ${t.lugar || ''}</span>
+        <span>🌎 ${t.pais || ''}</span>
+      </div>
+    </div>
+    <div class="tourn-right">
+      <span class="badge ${badgeClass}">${cat}</span>
+      <div>${precio}</div>
+      ${accion}
+    </div>
+  </div>`;
+}
+function renderTournaments(list) {
+  const el = document.getElementById('tournament-list');
+  if (!el) return;
+  if (!list || !list.length) { el.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted)">No hay torneos cargados por el momento.</div>'; return; }
+  const sorted = list.slice().sort((a,b) => (a.fechaInicio||'').localeCompare(b.fechaInicio||''));
+  el.innerHTML = sorted.map(tournCardHTML).join('');
+}
+fetch('./tournaments.json').then(r => r.json()).then(renderTournaments).catch(() => {
+  const el = document.getElementById('tournament-list');
+  if (el) el.innerHTML = '<div style="padding:40px;text-align:center;color:var(--muted)">No se pudieron cargar los torneos. Intenta más tarde.</div>';
+});
+
+// ═══ SPA ROUTING ═══
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + id);
+  if (page) { page.classList.add('active'); window.scrollTo(0,0); }
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+}
+
+// ═══ TABS ═══
+function switchTab(el, contentId) {
+  const container = el.closest('.page') || document;
+  container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  container.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+  el.classList.add('active');
+  const content = document.getElementById(contentId);
+  if (content) content.style.display = '';
+}
+
+// ═══ MODAL TABS ═══
+function switchModalTab(el, contentId) {
+  const modal = el.closest('.modal');
+  modal.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+  modal.querySelectorAll('[id^="tab-"]').forEach(c => { if(c.closest('.modal') === modal) c.style.display = 'none'; });
+  el.classList.add('active');
+  const content = document.getElementById(contentId);
+  if (content) content.style.display = '';
+}
+
+// ═══ MODALS ═══
+function openModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.add('open');
+}
+function closeModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.remove('open');
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+});
+
+// ═══ TOAST ═══
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ═══ FILTER CHIPS ═══
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', function() {
+    const row = this.closest('.filter-row');
+    if (row) row.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+
+// ═══ DASHBOARD SIDEBAR ═══
+function switchDash(el, panelId) {
+  document.querySelectorAll('.sn-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('[id^="dash-"]').forEach(p => p.style.display = 'none');
+  const panel = document.getElementById(panelId);
+  if (panel) panel.style.display = '';
+}
+
+// ═══ MESSAGING ═══
+function activateThread(el) {
+  document.querySelectorAll('.msg-thread').forEach(t => t.classList.remove('active-thread'));
+  el.classList.add('active-thread');
+}
+
+// ═══ ROI CALCULATOR ═══
+function calcROI(val) {
+  const v = parseInt(val) || 0;
+  const resultEl = document.getElementById('roi-result');
+  if (v < 1000) { resultEl.style.display = 'none'; return; }
+  resultEl.style.display = 'block';
+  const reach = Math.round(v * 0.06);
+  const cpm = Math.round(v / (reach / 1000));
+  const tax = Math.round(v * 0.5);
+  const players = v < 300000 ? 1 : v < 600000 ? 2 : v < 1000000 ? 4 : 8;
+  document.getElementById('roi-reach').textContent = reach.toLocaleString('es-CL');
+  document.getElementById('roi-cpm').textContent = '$' + cpm.toLocaleString('es-CL');
+  document.getElementById('roi-tax').textContent = '$' + tax.toLocaleString('es-CL');
+  document.getElementById('roi-players').textContent = players;
+}
+
+// ═══ BARS interactive ═══
+document.querySelectorAll('.bar-chart .bar').forEach(bar => {
+  bar.addEventListener('click', function() {
+    this.closest('.bar-chart').querySelectorAll('.bar').forEach(b => b.classList.remove('active-bar'));
+    this.classList.add('active-bar');
+  });
+});
+
+// ═══ INIT: show landing by default ═══
+showPage('landing');
+</script>
+</body>
+</html>

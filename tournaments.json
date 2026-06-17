@@ -1,0 +1,122 @@
+[
+  {
+    "id": "recFMZpvxnsSCNLx3",
+    "nombre": "Pista Dura - Fase de Grupos",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": ["Club/Local"],
+    "fechaInicio": "2026-06-27",
+    "fechaFin": "2026-06-28",
+    "valor": "$39.990",
+    "linkInscripcion": "https://teniscl.com/evento/pista-dura-mayo/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "recQkMvFDeeqVmch1",
+    "nombre": "Temporada 2026 (20-22 junio)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": ["Club/Local"],
+    "fechaInicio": "2026-06-20",
+    "fechaFin": "2026-06-22",
+    "valor": "$39.990",
+    "linkInscripcion": "https://teniscl.com/evento/temporada-2026-20-al-22-de-junio-club-deportivo-uss/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "rec7tDXOZjDq65KzZ",
+    "nombre": "Temporada 2026 (04-06 julio)",
+    "pais": "Chile",
+    "lugar": "Ex Federación San Miguel, Santiago",
+    "categoria": ["Club/Local"],
+    "fechaInicio": "2026-07-04",
+    "fechaFin": "2026-07-06",
+    "valor": "$33.990",
+    "linkInscripcion": "https://teniscl.com/evento/san-miguel-julio/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "recGa9uT5OOQE5FFx",
+    "nombre": "Master 1000 (11-13 julio)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": ["Club/Local"],
+    "fechaInicio": "2026-07-11",
+    "fechaFin": "2026-07-13",
+    "valor": "$39.990",
+    "linkInscripcion": "https://teniscl.com/evento/master-1000-julio/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "recvrl4gX3RyfZF55",
+    "nombre": "Torneo de Duplas (18-21 julio)",
+    "pais": "Chile",
+    "lugar": "Ex Federación San Miguel, Santiago",
+    "categoria": ["Club/Local"],
+    "fechaInicio": "2026-07-18",
+    "fechaFin": "2026-07-21",
+    "valor": "$51.990",
+    "linkInscripcion": "https://teniscl.com/evento/duplas-julio/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "recYwbuFlROcbgqwL",
+    "nombre": "ITF World Tennis Tour M15 Santiago #1",
+    "pais": "Chile",
+    "lugar": "Estadio Nacional, Santiago",
+    "categoria": ["ITF World Tennis Tour", "Federación Chile"],
+    "fechaInicio": "2026-07-21",
+    "fechaFin": "2026-07-26",
+    "fuente": "https://fetech.cl/el-itf-world-tennis-tour-junior-confirma-primeras-fechas-en-chile-este-2026/",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "reccaaVJ7PdJUHGgL",
+    "nombre": "ITF World Tennis Tour M15 Santiago #2",
+    "pais": "Chile",
+    "lugar": "Estadio Nacional, Santiago",
+    "categoria": ["ITF World Tennis Tour", "Federación Chile"],
+    "fechaInicio": "2026-07-28",
+    "fechaFin": "2026-08-02",
+    "fuente": "https://fetech.cl/el-itf-world-tennis-tour-junior-confirma-primeras-fechas-en-chile-este-2026/",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recYAIzWVAccLPl3f",
+    "nombre": "USTA National Junior Championships - inscripciones",
+    "pais": "Estados Unidos",
+    "lugar": "Sede nacional (varía por sección USTA)",
+    "categoria": ["USTA"],
+    "fechaInicio": null,
+    "fechaLimiteInscripcion": "2026-07-09",
+    "fuente": "https://ustaboys.com/entry-information/important-dates/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "recJkANvcsZM7NUVX",
+    "nombre": "Campeonato de España Infantil \"Memorial Manuel Alonso\"",
+    "pais": "España",
+    "lugar": "Torrevieja Sport City, Torrevieja (Alicante)",
+    "categoria": ["RFET"],
+    "fechaInicio": "2026-07-06",
+    "fechaFin": "2026-07-12",
+    "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-individual.html",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "rec6aq5sQlwd6E9q2",
+    "nombre": "Campeonato de España Júnior por Equipos (Generali/Iberdrola)",
+    "pais": "España",
+    "lugar": "Real Zaragoza Club de Tenis 1907, Zaragoza",
+    "categoria": ["RFET"],
+    "fechaInicio": "2026-06-30",
+    "fechaFin": "2026-07-05",
+    "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-equipos.html",
+    "estado": "Próximamente"
+  }
+]
