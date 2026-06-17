@@ -1,16 +1,14 @@
 [
-  
   {
-    "id": "recFMZpvxnsSCNLx3",
-    "nombre": "Pista Dura - Fase de Grupos",
-    "pais": "Chile",
-    "lugar": "Club Deportivo USS, Santiago",
-    "categoria": ["Club/Local"],
-    "fechaInicio": "2026-06-27",
-    "fechaFin": "2026-06-28",
-    "valor": "$39.990",
-    "linkInscripcion": "https://teniscl.com/evento/pista-dura-mayo/",
-    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "id": "recYAIzWVAccLPl3f",
+    "nombre": "USTA National Junior Championships - entries",
+    "pais": "Estados Unidos",
+    "lugar": "Sede nacional (varía por sección USTA)",
+    "categoria": ["USTA"],
+    "fechaInicio": null,
+    "fechaFin": null,
+    "fechaLimiteInscripcion": "2026-07-09",
+    "fuente": "https://ustaboys.com/entry-information/important-dates/",
     "estado": "Inscripción Abierta"
   },
   {
@@ -27,6 +25,30 @@
     "estado": "Inscripción Abierta"
   },
   {
+    "id": "recFMZpvxnsSCNLx3",
+    "nombre": "Pista Dura - Fase de Grupos",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": ["Club/Local"],
+    "fechaInicio": "2026-06-27",
+    "fechaFin": "2026-06-28",
+    "valor": "$39.990",
+    "linkInscripcion": "https://teniscl.com/evento/pista-dura-mayo/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "rec6aq5sQlwd6E9q2",
+    "nombre": "Campeonato de España Júnior por Equipos (Generali/Iberdrola)",
+    "pais": "España",
+    "lugar": "Real Zaragoza Club de Tenis 1907, Zaragoza",
+    "categoria": ["RFET"],
+    "fechaInicio": "2026-06-30",
+    "fechaFin": "2026-07-05",
+    "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-equipos.html",
+    "estado": "Próximamente"
+  },
+  {
     "id": "rec7tDXOZjDq65KzZ",
     "nombre": "Temporada 2026 (04-06 julio)",
     "pais": "Chile",
@@ -38,6 +60,17 @@
     "linkInscripcion": "https://teniscl.com/evento/san-miguel-julio/",
     "fuente": "https://teniscl.com/inscripcion-torneos/",
     "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "recJkANvcsZM7NUVX",
+    "nombre": "Campeonato de España Infantil \"Memorial Manuel Alonso\"",
+    "pais": "España",
+    "lugar": "Torrevieja Sport City, Torrevieja (Alicante)",
+    "categoria": ["RFET"],
+    "fechaInicio": "2026-07-06",
+    "fechaFin": "2026-07-12",
+    "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-individual.html",
+    "estado": "Próximamente"
   },
   {
     "id": "recGa9uT5OOQE5FFx",
@@ -88,36 +121,25 @@
     "estado": "Próximamente"
   },
   {
-    "id": "recYAIzWVAccLPl3f",
-    "nombre": "USTA National Junior Championships - inscripciones",
-    "pais": "Estados Unidos",
-    "lugar": "Sede nacional (varía por sección USTA)",
-    "categoria": ["USTA"],
-    "fechaInicio": null,
-    "fechaLimiteInscripcion": "2026-07-09",
-    "fuente": "https://ustaboys.com/entry-information/important-dates/",
-    "estado": "Inscripción Abierta"
-  },
-  {
-    "id": "recJkANvcsZM7NUVX",
-    "nombre": "Campeonato de España Infantil \"Memorial Manuel Alonso\"",
-    "pais": "España",
-    "lugar": "Torrevieja Sport City, Torrevieja (Alicante)",
-    "categoria": ["RFET"],
-    "fechaInicio": "2026-07-06",
-    "fechaFin": "2026-07-12",
-    "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-individual.html",
+    "id": "recBvbiOWW0uiVG3S",
+    "nombre": "ITF World Tennis Tour M15 Santiago (Club U. Católica) #1",
+    "pais": "Chile",
+    "lugar": "Club Deportivo Universidad Católica, Las Condes, Santiago",
+    "categoria": ["ITF World Tennis Tour", "Federación Chile"],
+    "fechaInicio": "2026-11-25",
+    "fechaFin": "2026-11-30",
+    "fuente": "https://fetech.cl/chile-recibira-dos-torneos-m15-en-el-club-deportivo-universidad-catolica/",
     "estado": "Próximamente"
   },
   {
-    "id": "rec6aq5sQlwd6E9q2",
-    "nombre": "Campeonato de España Júnior por Equipos (Generali/Iberdrola)",
-    "pais": "España",
-    "lugar": "Real Zaragoza Club de Tenis 1907, Zaragoza",
-    "categoria": ["RFET"],
-    "fechaInicio": "2026-06-30",
-    "fechaFin": "2026-07-05",
-    "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-equipos.html",
+    "id": "recLGpYzj564ALHRk",
+    "nombre": "ITF World Tennis Tour M15 Santiago (Club U. Católica) #2",
+    "pais": "Chile",
+    "lugar": "Club Deportivo Universidad Católica, Las Condes, Santiago",
+    "categoria": ["ITF World Tennis Tour", "Federación Chile"],
+    "fechaInicio": "2026-12-02",
+    "fechaFin": "2026-12-07",
+    "fuente": "https://fetech.cl/chile-recibira-dos-torneos-m15-en-el-club-deportivo-universidad-catolica/",
     "estado": "Próximamente"
   }
 ]
