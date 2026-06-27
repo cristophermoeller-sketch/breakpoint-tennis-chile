@@ -1,1 +1,564 @@
-[{"id":"rec7tDXOZjDq65KzZ","nombre":"Temporada 2026 (04-06 julio)","pais":"Chile","lugar":"Ex Federación San Miguel, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-07-04","fechaFin":"2026-07-06","valor":"$33.990","linkInscripcion":"https://teniscl.com/evento/san-miguel-julio/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recFMZpvxnsSCNLx3","nombre":"Pista Dura - Fase de Grupos (27-28 junio)","pais":"Chile","lugar":"Club Deportivo USS, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-06-27","fechaFin":"2026-06-28","valor":"$39.990","linkInscripcion":"https://teniscl.com/evento/pista-dura-mayo/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recGa9uT5OOQE5FFx","nombre":"Master 1000 (11-13 julio)","pais":"Chile","lugar":"Club Deportivo USS, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-07-11","fechaFin":"2026-07-13","valor":"$39.990","linkInscripcion":"https://teniscl.com/evento/master-1000-julio/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recQkMvFDeeqVmch1","nombre":"Temporada 2026 (20-22 junio)","pais":"Chile","lugar":"Club Deportivo USS, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-06-20","fechaFin":"2026-06-22","valor":"$39.990","linkInscripcion":"https://teniscl.com/evento/temporada-2026-20-al-22-de-junio-club-deportivo-uss/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recvrl4gX3RyfZF55","nombre":"Torneo de Duplas (18-21 julio)","pais":"Chile","lugar":"Ex Federación San Miguel, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-07-18","fechaFin":"2026-07-21","valor":"$51.990","linkInscripcion":"https://teniscl.com/evento/duplas-julio/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"rec3BFfCYZD5Q9lsz","nombre":"Temporada 2026 (01-03 agosto)","pais":"Chile","lugar":"Club Deportivo USS, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-08-01","fechaFin":"2026-08-03","valor":"$40.990","linkInscripcion":"https://teniscl.com/evento/uss-agosto/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recox1CPu4THLDIDw","nombre":"Master 1000 Agosto (15-18 agosto)","pais":"Chile","lugar":"Ex Federación San Miguel, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-08-15","fechaFin":"2026-08-18","valor":"$35.990","linkInscripcion":"https://teniscl.com/evento/master-1000-agosto/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recE5jATPaX7clnLC","nombre":"Torneo por Equipos (22-25 agosto)","pais":"Chile","lugar":"Ex Federación San Miguel, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-08-22","fechaFin":"2026-08-25","valor":"$99.990","linkInscripcion":"https://teniscl.com/evento/equipos-agosto/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recXrznMBpy0jxJkW","nombre":"Pista Dura - Fase de Grupos (29-31 agosto)","pais":"Chile","lugar":"Club Deportivo USS, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-08-29","fechaFin":"2026-08-31","valor":"$40.990","linkInscripcion":"https://teniscl.com/evento/pista-dura-agosto/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recH1lxEqPNJL5HXl","nombre":"Master 1000 Septiembre (05-08 septiembre)","pais":"Chile","lugar":"Ex Federación San Miguel, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-09-05","fechaFin":"2026-09-08","valor":"$35.990","linkInscripcion":"https://teniscl.com/evento/master-1000-septiembre-05-al-08-de-septiembre-ex-federacion-san-miguel/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"rec8f3Ec4LCGnLgdK","nombre":"Torneo de Duplas (12-15 septiembre)","pais":"Chile","lugar":"Ex Federación San Miguel, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-09-12","fechaFin":"2026-09-15","valor":"$51.990","linkInscripcion":"https://teniscl.com/evento/torneo-de-duplas-12-al-15-de-septiembre-ex-federacion-san-miguel/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recDWmceXOPq2CXuD","nombre":"Pista Dura - Fase de Grupos (26-28 septiembre)","pais":"Chile","lugar":"Club Deportivo USS, Santiago","categoria":["Club/Local"],"fechaInicio":"2026-09-26","fechaFin":"2026-09-28","valor":"$40.990","linkInscripcion":"https://teniscl.com/evento/pista-dura-septiembre/","fuente":"https://teniscl.com/inscripcion-torneos/","estado":"Inscripción Abierta"},{"id":"recYwbuFlROcbgqwL","nombre":"ITF World Tennis Tour M15 Santiago #1","pais":"Chile","lugar":"Estadio Nacional, Santiago","categoria":["ITF World Tennis Tour","Federación Chile"],"fechaInicio":"2026-07-21","fechaFin":"2026-07-26","fuente":"https://fetech.cl/el-itf-world-tennis-tour-junior-confirma-primeras-fechas-en-chile-este-2026/","estado":"Próximamente"},{"id":"reccaaVJ7PdJUHGgL","nombre":"ITF World Tennis Tour M15 Santiago #2","pais":"Chile","lugar":"Estadio Nacional, Santiago","categoria":["ITF World Tennis Tour","Federación Chile"],"fechaInicio":"2026-07-28","fechaFin":"2026-08-02","fuente":"https://fetech.cl/el-itf-world-tennis-tour-junior-confirma-primeras-fechas-en-chile-este-2026/","estado":"Próximamente"},{"id":"recBvbiOWW0uiVG3S","nombre":"ITF World Tennis Tour M15 Santiago (Club U. Católica) #1","pais":"Chile","lugar":"Club Deportivo Universidad Católica, Las Condes, Santiago","categoria":["ITF World Tennis Tour","Federación Chile"],"fechaInicio":"2026-11-25","fechaFin":"2026-11-30","fuente":"https://fetech.cl/chile-recibira-dos-torneos-m15-en-el-club-deportivo-universidad-catolica/","estado":"Próximamente"},{"id":"recLGpYzj564ALHRk","nombre":"ITF World Tennis Tour M15 Santiago (Club U. Católica) #2","pais":"Chile","lugar":"Club Deportivo Universidad Católica, Las Condes, Santiago","categoria":["ITF World Tennis Tour","Federación Chile"],"fechaInicio":"2026-12-02","fechaFin":"2026-12-07","fuente":"https://fetech.cl/chile-recibira-dos-torneos-m15-en-el-club-deportivo-universidad-catolica/","estado":"Próximamente"},{"id":"recYAIzWVAccLPl3f","nombre":"USTA National Junior Championships - entries","pais":"Estados Unidos","lugar":"Sede nacional (varía por sección USTA)","categoria":["USTA"],"fechaInicio":null,"fechaFin":null,"fechaLimiteInscripcion":"2026-07-09","fuente":"https://ustaboys.com/entry-information/important-dates/","estado":"Inscripción Abierta"},{"id":"rec6aq5sQlwd6E9q2","nombre":"Campeonato de España Júnior por Equipos (Generali/Iberdrola)","pais":"España","lugar":"Real Zaragoza Club de Tenis 1907, Zaragoza","categoria":["RFET"],"fechaInicio":"2026-06-30","fechaFin":"2026-07-05","fuente":"https://www.rfet.es/es/campeonatos-espana-juveniles-equipos.html","estado":"Próximamente"},{"id":"recJkANvcsZM7NUVX","nombre":"Campeonato de España Infantil \"Memorial Manuel Alonso\"","pais":"España","lugar":"Torrevieja Sport City, Torrevieja (Alicante)","categoria":["RFET"],"fechaInicio":"2026-07-06","fechaFin":"2026-07-12","fuente":"https://www.rfet.es/es/campeonatos-espana-juveniles-individual.html","estado":"Próximamente"}]
+[
+  {
+    "id": "recQkMvFDeeqVmch1",
+    "nombre": "Temporada 2026 (20-22 junio)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-06-20",
+    "fechaFin": "2026-06-22",
+    "valor": "$39.990",
+    "linkInscripcion": "https://teniscl.com/evento/temporada-2026-20-al-22-de-junio-club-deportivo-uss/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Finalizado"
+  },
+  {
+    "id": "recFMZpvxnsSCNLx3",
+    "nombre": "Pista Dura - Fase de Grupos (27-28 junio)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-06-27",
+    "fechaFin": "2026-06-28",
+    "valor": "$39.990",
+    "linkInscripcion": "https://teniscl.com/evento/pista-dura-mayo/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "rec6aq5sQlwd6E9q2",
+    "nombre": "Campeonato de España Júnior por Equipos (Generali/Iberdrola)",
+    "pais": "España",
+    "lugar": "Real Zaragoza Club de Tenis 1907, Zaragoza",
+    "categoria": [
+      "RFET"
+    ],
+    "fechaInicio": "2026-06-30",
+    "fechaFin": "2026-07-05",
+    "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-equipos.html",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "tc-rmtt3",
+    "nombre": "3ª Fecha RM Tennis Tour (Honor / +200 / +500 / +800 / +40)",
+    "pais": "Chile",
+    "lugar": "Mundial Lawn Tennis Club, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-03",
+    "fechaFin": "2026-07-05",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "rec7tDXOZjDq65KzZ",
+    "nombre": "Temporada 2026 (04-06 julio)",
+    "pais": "Chile",
+    "lugar": "Ex Federación San Miguel, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-07-04",
+    "fechaFin": "2026-07-06",
+    "valor": "$33.990",
+    "linkInscripcion": "https://teniscl.com/evento/san-miguel-julio/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-cpt200",
+    "nombre": "Circuito Pro Tenis +200",
+    "pais": "Chile",
+    "lugar": "Club del Valle, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-04",
+    "fechaFin": "2026-07-06",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recJkANvcsZM7NUVX",
+    "nombre": "Campeonato de España Infantil \"Memorial Manuel Alonso\"",
+    "pais": "España",
+    "lugar": "Torrevieja Sport City, Torrevieja (Alicante)",
+    "categoria": [
+      "RFET"
+    ],
+    "fechaInicio": "2026-07-06",
+    "fechaFin": "2026-07-12",
+    "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-individual.html",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recGa9uT5OOQE5FFx",
+    "nombre": "Master 1000 (11-13 julio)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-07-11",
+    "fechaFin": "2026-07-13",
+    "valor": "$39.990",
+    "linkInscripcion": "https://teniscl.com/evento/master-1000-julio/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-ftt10",
+    "nombre": "Fila Tennis Tour · Etapa 10 (Varones y Damas)",
+    "pais": "Chile",
+    "lugar": "Club de Tenis La Reina, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-11",
+    "fechaFin": "2026-07-13",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "tc-mrchic",
+    "nombre": "Academia MR Hacienda Chicureo (Honor / +300 / +600 / +800)",
+    "pais": "Chile",
+    "lugar": "Club de Golf La Hacienda de Chicureo",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-17",
+    "fechaFin": "2026-07-19",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recvrl4gX3RyfZF55",
+    "nombre": "Torneo de Duplas (18-21 julio)",
+    "pais": "Chile",
+    "lugar": "Ex Federación San Miguel, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-07-18",
+    "fechaFin": "2026-07-21",
+    "valor": "$51.990",
+    "linkInscripcion": "https://teniscl.com/evento/duplas-julio/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-101215-12",
+    "nombre": "Tenis 10·12·15 · Etapa 12 (Menores)",
+    "pais": "Chile",
+    "lugar": "Club de Tenis La Reina, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-18",
+    "fechaFin": "2026-07-19",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recYwbuFlROcbgqwL",
+    "nombre": "ITF World Tennis Tour M15 Santiago #1",
+    "pais": "Chile",
+    "lugar": "Estadio Nacional, Santiago",
+    "categoria": [
+      "ITF World Tennis Tour",
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-21",
+    "fechaFin": "2026-07-26",
+    "fuente": "https://fetech.cl/el-itf-world-tennis-tour-junior-confirma-primeras-fechas-en-chile-este-2026/",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "tc-ftt11",
+    "nombre": "Fila Tennis Tour · Etapa 11 (Varones y Damas)",
+    "pais": "Chile",
+    "lugar": "Estadio Español de Viña del Mar",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-25",
+    "fechaFin": "2026-07-27",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "reccaaVJ7PdJUHGgL",
+    "nombre": "ITF World Tennis Tour M15 Santiago #2",
+    "pais": "Chile",
+    "lugar": "Estadio Nacional, Santiago",
+    "categoria": [
+      "ITF World Tennis Tour",
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-28",
+    "fechaFin": "2026-08-02",
+    "fuente": "https://fetech.cl/el-itf-world-tennis-tour-junior-confirma-primeras-fechas-en-chile-este-2026/",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "rec3BFfCYZD5Q9lsz",
+    "nombre": "Temporada 2026 (01-03 agosto)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-08-01",
+    "fechaFin": "2026-08-03",
+    "valor": "$40.990",
+    "linkInscripcion": "https://teniscl.com/evento/uss-agosto/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-fpt300",
+    "nombre": "Futuros Para el Tenis +300",
+    "pais": "Chile",
+    "lugar": "Club Futuros Para el Tenis, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-01",
+    "fechaFin": "2026-08-03",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "tc-101215-13",
+    "nombre": "Tenis 10·12·15 · Etapa 13 (Menores)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-01",
+    "fechaFin": "2026-08-02",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "tc-coquimbo",
+    "nombre": "Honor Pro Series Coquimbo",
+    "pais": "Chile",
+    "lugar": "Club de Tenis Coquimbo",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-03",
+    "fechaFin": "2026-08-05",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "tc-valpo",
+    "nombre": "Abierto de Tenis de Valparaíso (Honor)",
+    "pais": "Chile",
+    "lugar": "Parque Don Elías, Valparaíso",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-07",
+    "fechaFin": "2026-08-09",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recox1CPu4THLDIDw",
+    "nombre": "Master 1000 Agosto (15-18 agosto)",
+    "pais": "Chile",
+    "lugar": "Ex Federación San Miguel, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-08-15",
+    "fechaFin": "2026-08-18",
+    "valor": "$35.990",
+    "linkInscripcion": "https://teniscl.com/evento/master-1000-agosto/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-ftt12",
+    "nombre": "Fila Tennis Tour · Etapa 12 (Varones y Damas)",
+    "pais": "Chile",
+    "lugar": "Club de Golf Los Leones, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-15",
+    "fechaFin": "2026-08-17",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recE5jATPaX7clnLC",
+    "nombre": "Torneo por Equipos (22-25 agosto)",
+    "pais": "Chile",
+    "lugar": "Ex Federación San Miguel, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-08-22",
+    "fechaFin": "2026-08-25",
+    "valor": "$99.990",
+    "linkInscripcion": "https://teniscl.com/evento/equipos-agosto/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-101215-14",
+    "nombre": "Tenis 10·12·15 · Etapa 14 (Menores)",
+    "pais": "Chile",
+    "lugar": "Club de Golf Los Leones, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-22",
+    "fechaFin": "2026-08-23",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "tc-ftt13",
+    "nombre": "Fila Tennis Tour · Etapa 13 (Varones y Damas)",
+    "pais": "Chile",
+    "lugar": "Club de Tenis Arica",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-27",
+    "fechaFin": "2026-08-29",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "tc-aft7",
+    "nombre": "Copa Academia AFT by Approach Tennis VII (+200 / Honor)",
+    "pais": "Chile",
+    "lugar": "Club AFT, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-28",
+    "fechaFin": "2026-08-30",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recXrznMBpy0jxJkW",
+    "nombre": "Pista Dura - Fase de Grupos (29-31 agosto)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-08-29",
+    "fechaFin": "2026-08-31",
+    "valor": "$40.990",
+    "linkInscripcion": "https://teniscl.com/evento/pista-dura-agosto/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "recH1lxEqPNJL5HXl",
+    "nombre": "Master 1000 Septiembre (05-08 septiembre)",
+    "pais": "Chile",
+    "lugar": "Ex Federación San Miguel, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-09-05",
+    "fechaFin": "2026-09-08",
+    "valor": "$35.990",
+    "linkInscripcion": "https://teniscl.com/evento/master-1000-septiembre-05-al-08-de-septiembre-ex-federacion-san-miguel/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-ftt14",
+    "nombre": "Fila Tennis Tour · Etapa 14 (Varones y Damas)",
+    "pais": "Chile",
+    "lugar": "Estadio Croata, Vitacura",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-09-05",
+    "fechaFin": "2026-09-07",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "rec8f3Ec4LCGnLgdK",
+    "nombre": "Torneo de Duplas (12-15 septiembre)",
+    "pais": "Chile",
+    "lugar": "Ex Federación San Miguel, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-09-12",
+    "fechaFin": "2026-09-15",
+    "valor": "$51.990",
+    "linkInscripcion": "https://teniscl.com/evento/torneo-de-duplas-12-al-15-de-septiembre-ex-federacion-san-miguel/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-101215-15",
+    "nombre": "Tenis 10·12·15 · Etapa 15 (Menores)",
+    "pais": "Chile",
+    "lugar": "Estadio Croata, Vitacura",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-09-12",
+    "fechaFin": "2026-09-13",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recDWmceXOPq2CXuD",
+    "nombre": "Pista Dura - Fase de Grupos (26-28 septiembre)",
+    "pais": "Chile",
+    "lugar": "Club Deportivo USS, Santiago",
+    "categoria": [
+      "Club/Local"
+    ],
+    "fechaInicio": "2026-09-26",
+    "fechaFin": "2026-09-28",
+    "valor": "$40.990",
+    "linkInscripcion": "https://teniscl.com/evento/pista-dura-septiembre/",
+    "fuente": "https://teniscl.com/inscripcion-torneos/",
+    "estado": "Inscripción Abierta"
+  },
+  {
+    "id": "tc-aft8",
+    "nombre": "Copa Academia AFT by Approach Tennis VIII (+100 / +300 / +600 / +35)",
+    "pais": "Chile",
+    "lugar": "Club AFT, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-09-26",
+    "fechaFin": "2026-09-28",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "rec6onHuK8t4cmHW3",
+    "nombre": "Fila Tennis Tour · Etapa 15 (Varones y Damas)",
+    "pais": "Chile",
+    "lugar": "Estadio Palestino, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-10-17",
+    "fechaFin": "2026-10-19",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recksGWNs12gxOruH",
+    "nombre": "Tenis 10·12·15 · Etapa 16 (Menores)",
+    "pais": "Chile",
+    "lugar": "Estadio Palestino, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-10-24",
+    "fechaFin": "2026-10-25",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "rec64gE1jstzfHKuB",
+    "nombre": "Fila Tennis Tour · Etapa 16 (Varones y Damas)",
+    "pais": "Chile",
+    "lugar": "Academia de Tenis Gold Sport, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-10-24",
+    "fechaFin": "2026-10-26",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "rectfkZrN6HVZM1jM",
+    "nombre": "Honor Top Tenis Academia",
+    "pais": "Chile",
+    "lugar": "Top Tenis Academia, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-10-30",
+    "fechaFin": "2026-11-01",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recWueFvRa3jz2OEc",
+    "nombre": "Master Tenis 10·12·15 (Final Menores)",
+    "pais": "Chile",
+    "lugar": "Estadio Israelita, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-11-21",
+    "fechaFin": "2026-11-22",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recBvbiOWW0uiVG3S",
+    "nombre": "ITF World Tennis Tour M15 Santiago (Club U. Católica) #1",
+    "pais": "Chile",
+    "lugar": "Club Deportivo Universidad Católica, Las Condes, Santiago",
+    "categoria": [
+      "ITF World Tennis Tour",
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-11-25",
+    "fechaFin": "2026-11-30",
+    "fuente": "https://fetech.cl/chile-recibira-dos-torneos-m15-en-el-club-deportivo-universidad-catolica/",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recLGpYzj564ALHRk",
+    "nombre": "ITF World Tennis Tour M15 Santiago (Club U. Católica) #2",
+    "pais": "Chile",
+    "lugar": "Club Deportivo Universidad Católica, Las Condes, Santiago",
+    "categoria": [
+      "ITF World Tennis Tour",
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-12-02",
+    "fechaFin": "2026-12-07",
+    "fuente": "https://fetech.cl/chile-recibira-dos-torneos-m15-en-el-club-deportivo-universidad-catolica/",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recYAIzWVAccLPl3f",
+    "nombre": "USTA National Junior Championships - entries",
+    "pais": "Estados Unidos",
+    "lugar": "Sede nacional (varía por sección USTA)",
+    "categoria": [
+      "USTA"
+    ],
+    "fechaInicio": null,
+    "fechaFin": null,
+    "fechaLimiteInscripcion": "2026-07-09",
+    "fuente": "https://ustaboys.com/entry-information/important-dates/",
+    "estado": "Inscripción Abierta"
+  }
+]
