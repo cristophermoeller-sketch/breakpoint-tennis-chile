@@ -16,7 +16,7 @@
   },
   {
     "id": "recFMZpvxnsSCNLx3",
-    "nombre": "Pista Dura - Fase de Grupos (27-28 junio)",
+    "nombre": "Pista Dura - Fase de Grupos",
     "pais": "Chile",
     "lugar": "Club Deportivo USS, Santiago",
     "categoria": [
@@ -27,7 +27,7 @@
     "valor": "$39.990",
     "linkInscripcion": "https://teniscl.com/evento/pista-dura-mayo/",
     "fuente": "https://teniscl.com/inscripcion-torneos/",
-    "estado": "Inscripción Abierta"
+    "estado": "Finalizado"
   },
   {
     "id": "rec6aq5sQlwd6E9q2",
@@ -40,19 +40,6 @@
     "fechaInicio": "2026-06-30",
     "fechaFin": "2026-07-05",
     "fuente": "https://www.rfet.es/es/campeonatos-espana-juveniles-equipos.html",
-    "estado": "Próximamente"
-  },
-  {
-    "id": "tc-rmtt3",
-    "nombre": "3ª Fecha RM Tennis Tour (Honor / +200 / +500 / +800 / +40)",
-    "pais": "Chile",
-    "lugar": "Mundial Lawn Tennis Club, Santiago",
-    "categoria": [
-      "Federación Chile"
-    ],
-    "fechaInicio": "2026-07-03",
-    "fechaFin": "2026-07-05",
-    "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
   {
@@ -71,15 +58,30 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-cpt200",
+    "id": "recZmthEFTCPDqje1",
+    "nombre": "3ª Fecha RM Tennis Tour (Honor / +200 / +500 / +800 / +40)",
+    "pais": "Chile",
+    "lugar": "Mundial Lawn Tennis Club, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-04",
+    "fechaFin": "2026-07-07",
+    "fechaLimiteInscripcion": "2026-07-03",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recEg3C9dDGWA2Fs8",
     "nombre": "Circuito Pro Tenis +200",
     "pais": "Chile",
     "lugar": "Club del Valle, Santiago",
     "categoria": [
       "Federación Chile"
     ],
-    "fechaInicio": "2026-07-04",
+    "fechaInicio": "2026-07-05",
     "fechaFin": "2026-07-06",
+    "fechaLimiteInscripcion": "2026-07-04",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
@@ -112,7 +114,7 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-ftt10",
+    "id": "recc8WK9U01cRxwwP",
     "nombre": "Fila Tennis Tour · Etapa 10 (Varones y Damas)",
     "pais": "Chile",
     "lugar": "Club de Tenis La Reina, Santiago",
@@ -121,11 +123,12 @@
     ],
     "fechaInicio": "2026-07-11",
     "fechaFin": "2026-07-13",
+    "fechaLimiteInscripcion": "2026-07-11",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
   {
-    "id": "tc-mrchic",
+    "id": "recHn2Am1JD5TdHCq",
     "nombre": "Academia MR Hacienda Chicureo (Honor / +300 / +600 / +800)",
     "pais": "Chile",
     "lugar": "Club de Golf La Hacienda de Chicureo",
@@ -134,6 +137,7 @@
     ],
     "fechaInicio": "2026-07-17",
     "fechaFin": "2026-07-19",
+    "fechaLimiteInscripcion": "2026-07-16",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
@@ -153,7 +157,7 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-101215-12",
+    "id": "recaTB8RnTEG4DrsC",
     "nombre": "Tenis 10·12·15 · Etapa 12 (Menores)",
     "pais": "Chile",
     "lugar": "Club de Tenis La Reina, Santiago",
@@ -162,6 +166,7 @@
     ],
     "fechaInicio": "2026-07-18",
     "fechaFin": "2026-07-19",
+    "fechaLimiteInscripcion": "2026-07-17",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
@@ -180,7 +185,7 @@
     "estado": "Próximamente"
   },
   {
-    "id": "tc-ftt11",
+    "id": "recfmtodOrxrHUJrb",
     "nombre": "Fila Tennis Tour · Etapa 11 (Varones y Damas)",
     "pais": "Chile",
     "lugar": "Estadio Español de Viña del Mar",
@@ -189,6 +194,21 @@
     ],
     "fechaInicio": "2026-07-25",
     "fechaFin": "2026-07-27",
+    "fechaLimiteInscripcion": "2026-07-24",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recCcUs2fBbdldUCM",
+    "nombre": "Circuito Pro Tenis +100 (2ª fecha)",
+    "pais": "Chile",
+    "lugar": "Club del Valle, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-07-26",
+    "fechaFin": "2026-07-26",
+    "fechaLimiteInscripcion": "2026-07-25",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
@@ -222,7 +242,7 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-fpt300",
+    "id": "recS7AeVImzwPCxlI",
     "nombre": "Futuros Para el Tenis +300",
     "pais": "Chile",
     "lugar": "Club Futuros Para el Tenis, Santiago",
@@ -231,11 +251,12 @@
     ],
     "fechaInicio": "2026-08-01",
     "fechaFin": "2026-08-03",
+    "fechaLimiteInscripcion": "2026-07-31",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
   {
-    "id": "tc-101215-13",
+    "id": "recqAZ3LOmpLrJGMw",
     "nombre": "Tenis 10·12·15 · Etapa 13 (Menores)",
     "pais": "Chile",
     "lugar": "Club Deportivo USS, Santiago",
@@ -244,11 +265,12 @@
     ],
     "fechaInicio": "2026-08-01",
     "fechaFin": "2026-08-02",
+    "fechaLimiteInscripcion": "2026-07-31",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
   {
-    "id": "tc-coquimbo",
+    "id": "recwz0PvPVzLCLtkx",
     "nombre": "Honor Pro Series Coquimbo",
     "pais": "Chile",
     "lugar": "Club de Tenis Coquimbo",
@@ -257,11 +279,12 @@
     ],
     "fechaInicio": "2026-08-03",
     "fechaFin": "2026-08-05",
+    "fechaLimiteInscripcion": "2026-08-02",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
   {
-    "id": "tc-valpo",
+    "id": "rect9YVlNCqD4lOzx",
     "nombre": "Abierto de Tenis de Valparaíso (Honor)",
     "pais": "Chile",
     "lugar": "Parque Don Elías, Valparaíso",
@@ -270,6 +293,20 @@
     ],
     "fechaInicio": "2026-08-07",
     "fechaFin": "2026-08-09",
+    "fechaLimiteInscripcion": "2026-08-06",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recKVWNgEoM5aALQY",
+    "nombre": "Honor Top Tenis Academia (Agosto)",
+    "pais": "Chile",
+    "lugar": "Top Tenis Academia, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-08-07",
+    "fechaFin": "2026-08-10",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
@@ -289,7 +326,7 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-ftt12",
+    "id": "recvRe3cOlfL7lCUR",
     "nombre": "Fila Tennis Tour · Etapa 12 (Varones y Damas)",
     "pais": "Chile",
     "lugar": "Club de Golf Los Leones, Santiago",
@@ -298,6 +335,7 @@
     ],
     "fechaInicio": "2026-08-15",
     "fechaFin": "2026-08-17",
+    "fechaLimiteInscripcion": "2026-08-14",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
@@ -317,7 +355,7 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-101215-14",
+    "id": "recRv1DSMfvD94ED0",
     "nombre": "Tenis 10·12·15 · Etapa 14 (Menores)",
     "pais": "Chile",
     "lugar": "Club de Golf Los Leones, Santiago",
@@ -330,7 +368,7 @@
     "estado": "Próximamente"
   },
   {
-    "id": "tc-ftt13",
+    "id": "recJBWIv3qfN4KyDm",
     "nombre": "Fila Tennis Tour · Etapa 13 (Varones y Damas)",
     "pais": "Chile",
     "lugar": "Club de Tenis Arica",
@@ -339,11 +377,12 @@
     ],
     "fechaInicio": "2026-08-27",
     "fechaFin": "2026-08-29",
+    "fechaLimiteInscripcion": "2026-08-26",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
   {
-    "id": "tc-aft7",
+    "id": "rec4FZqWcX7QM97Kj",
     "nombre": "Copa Academia AFT by Approach Tennis VII (+200 / Honor)",
     "pais": "Chile",
     "lugar": "Club AFT, Santiago",
@@ -352,6 +391,7 @@
     ],
     "fechaInicio": "2026-08-28",
     "fechaFin": "2026-08-30",
+    "fechaLimiteInscripcion": "2026-08-27",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
@@ -386,7 +426,7 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-ftt14",
+    "id": "recrWROK1qVSmPmOd",
     "nombre": "Fila Tennis Tour · Etapa 14 (Varones y Damas)",
     "pais": "Chile",
     "lugar": "Estadio Croata, Vitacura",
@@ -414,7 +454,7 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-101215-15",
+    "id": "rec9fz4ISN1mdJW6G",
     "nombre": "Tenis 10·12·15 · Etapa 15 (Menores)",
     "pais": "Chile",
     "lugar": "Estadio Croata, Vitacura",
@@ -442,7 +482,7 @@
     "estado": "Inscripción Abierta"
   },
   {
-    "id": "tc-aft8",
+    "id": "recvN5xqbfU4Bkf56",
     "nombre": "Copa Academia AFT by Approach Tennis VIII (+100 / +300 / +600 / +35)",
     "pais": "Chile",
     "lugar": "Club AFT, Santiago",
@@ -468,19 +508,6 @@
     "estado": "Próximamente"
   },
   {
-    "id": "recksGWNs12gxOruH",
-    "nombre": "Tenis 10·12·15 · Etapa 16 (Menores)",
-    "pais": "Chile",
-    "lugar": "Estadio Palestino, Santiago",
-    "categoria": [
-      "Federación Chile"
-    ],
-    "fechaInicio": "2026-10-24",
-    "fechaFin": "2026-10-25",
-    "fuente": "https://www.tenischile.com/torneos",
-    "estado": "Próximamente"
-  },
-  {
     "id": "rec64gE1jstzfHKuB",
     "nombre": "Fila Tennis Tour · Etapa 16 (Varones y Damas)",
     "pais": "Chile",
@@ -490,6 +517,19 @@
     ],
     "fechaInicio": "2026-10-24",
     "fechaFin": "2026-10-26",
+    "fuente": "https://www.tenischile.com/torneos",
+    "estado": "Próximamente"
+  },
+  {
+    "id": "recksGWNs12gxOruH",
+    "nombre": "Tenis 10·12·15 · Etapa 16 (Menores)",
+    "pais": "Chile",
+    "lugar": "Estadio Palestino, Santiago",
+    "categoria": [
+      "Federación Chile"
+    ],
+    "fechaInicio": "2026-10-24",
+    "fechaFin": "2026-10-25",
     "fuente": "https://www.tenischile.com/torneos",
     "estado": "Próximamente"
   },
